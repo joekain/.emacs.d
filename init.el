@@ -58,5 +58,9 @@
   :init (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :bind ("C-x o" . ace-window))
 
+(use-package linum
+  :ensure t
+  :init (global-linum-mode 1))
+
 
 (setq custom-file "~/.emacs.d/custom.el")
