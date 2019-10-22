@@ -62,5 +62,8 @@
   :ensure t
   :init (global-linum-mode 1))
 
+(use-package yassnippet
+  :ensure t
+  :init (yas-global-mode 1))
 
 (setq custom-file "~/.emacs.d/custom.el")
