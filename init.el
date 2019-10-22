@@ -27,11 +27,15 @@
     (ivy-mode 1)
     (setq ivy-use-virtual-buffers t)
     (setq enable-recursive-minibuffers t)
+    (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
+    (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
   :bind
     ("M-x" . counsel-M-x)
     ("C-x C-f)" . counsel-find-file))
 
-(use-package ivy-prescient)
+(use-package ivy-prescient
+  :ensure t
+  :init (setq prescient-persist-mode t))
 
 (use-package key-chord
   :ensure t
