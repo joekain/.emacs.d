@@ -20,12 +20,13 @@
 
 
 ;; Enable and configure packages
-(use-package ivy
+(use-package counsel
   :ensure t
-  :init
+  :config
+    (setq ivy-use-virtual-buffers t
+	  enable-recursive-minibuffers t
+	  ivy-initial-inputs-alist nil)
     (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
-    (setq enable-recursive-minibuffers t)
     (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
     (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
   :bind
