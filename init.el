@@ -35,7 +35,7 @@
 
 (use-package ivy-prescient
   :ensure t
-  :init (setq prescient-persist-mode t))
+  :config (setq prescient-persist-mode t))
 
 (use-package key-chord
   :ensure t
@@ -59,24 +59,24 @@
 
 (use-package ace-window
   :ensure t
-  :init (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :bind ("C-x o" . ace-window))
 
 (use-package linum
   :ensure t
-  :init (global-linum-mode 1))
+  :config (global-linum-mode 1))
 
 (use-package yassnippet
   :ensure t
-  :init (yas-global-mode 1))
+  :config (yas-global-mode 1))
 
 (use-package dumb-jump
   :ensure t
-  :init (setq dumb-jump-selector 'ivy))
+  :config (setq dumb-jump-selector 'ivy))
 
 (use-package keyfreq
   :ensure t
-  :init
+  :config
     (keyfreq-mode 1)
     (keyfreq-autosave-mode 1))
 
