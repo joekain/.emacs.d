@@ -1,4 +1,3 @@
-
 ;; Swap alt and command keys on mac.
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'meta)
@@ -69,5 +68,15 @@
 (use-package yassnippet
   :ensure t
   :init (yas-global-mode 1))
+
+(use-package dumb-jump
+  :ensure t
+  :init (setq dumb-jump-selector 'ivy))
+
+(use-package keyfreq
+  :ensure t
+  :init
+    (keyfreq-mode 1)
+    (keyfreq-autosave-mode 1))
 
 (setq custom-file "~/.emacs.d/custom.el")
