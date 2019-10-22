@@ -22,6 +22,7 @@
 
 ;; Enable and configure packages
 (use-package ivy
+  :ensure t
   :init
     (ivy-mode 1)
     (setq ivy-use-virtual-buffers t)
@@ -42,6 +43,7 @@
   )
 
 (use-package recentf
+  :ensure t
   :config
     (setq recentf-max-saved-items 500
 	  recentf-max-menu-items 15
@@ -52,6 +54,7 @@
   :bind ("C-c f" . counsel-recentf))
 
 (use-package ace-window
+  :ensure t
   :init (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :bind ("C-x o" . ace-window))
 
