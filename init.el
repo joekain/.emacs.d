@@ -68,7 +68,7 @@
   :ensure t
   :config (global-linum-mode 1))
 
-(use-package yassnippet
+(use-package yasnippet
   :ensure t
   :config (yas-global-mode 1))
 
@@ -91,5 +91,6 @@
 	      ("d" deadgrep "deadgrep")
 	      ("f" fill-paragraph "fill-paragraph")
 	      ("m" make-frame "make-frame"))))
+
 
 (setq custom-file "~/.emacs.d/custom.el")
