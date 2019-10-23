@@ -35,7 +35,10 @@
 
 (use-package ivy-prescient
   :ensure t
-  :config (setq prescient-persist-mode t))
+  :config
+    (setq prescient-persist-mode t)
+    (ivy-prescient-mode t)
+  :hook 'after-init)
 
 (use-package key-chord
   :ensure t
@@ -81,6 +84,9 @@
   :config
     (keyfreq-mode 1)
     (keyfreq-autosave-mode 1))
+
+(use-package deadgrep
+  :ensure t)
 
 (use-package hydra
   :ensure t
