@@ -99,4 +99,6 @@
     (smartparens-global-mode t)
     (show-smartparens-global-mode t))
 
+(setq-default show-trailing-whitespace t)
+
 (setq custom-file "~/.emacs.d/custom.el")
