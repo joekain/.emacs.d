@@ -93,4 +93,10 @@
 	      ("m" make-frame "make-frame"))))
 
 
+(use-package smartparens-config
+  :ensure smartparens
+  :config
+    (smartparens-global-mode t)
+    (show-smartparens-global-mode t))
+
 (setq custom-file "~/.emacs.d/custom.el")
