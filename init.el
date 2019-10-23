@@ -101,4 +101,7 @@
 
 (setq-default show-trailing-whitespace t)
 
+(add-to-list 'load-path "~/.emacs.d/local")
+(load "local")
+
 (setq custom-file "~/.emacs.d/custom.el")
