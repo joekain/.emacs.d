@@ -40,11 +40,13 @@
 (use-package key-chord
   :ensure t
   :config
-    (key-chord-mode 1)
     (key-chord-define-global "jj" 'counsel-M-x)
-    (key-chord-define-global "qq" 'fill-paragraph)
-    (key-chord-define-global "hh" 'deadgrep)
-  )
+    )
+
+
+(use-package use-package-chords
+  :ensure t
+  :config (key-chord-mode 1))
 
 (use-package recentf
   :ensure t
@@ -79,5 +81,15 @@
   :config
     (keyfreq-mode 1)
     (keyfreq-autosave-mode 1))
+
+(use-package hydra
+  :ensure t
+  :config (key-chord-define-global "vv"
+	   (defhydra hydra-quick ()
+	      "Quick Access Commands"
+	      ("q" query-replace "query-replace")
+	      ("d" deadgrep "deadgrep")
+	      ("f" fill-paragraph "fill-paragraph")
+	      ("m" make-frame "make-frame"))))
 
 (setq custom-file "~/.emacs.d/custom.el")
