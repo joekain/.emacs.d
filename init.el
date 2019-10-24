@@ -30,12 +30,13 @@
     (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
     (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done))
 
+(use-package prescient)
 (use-package ivy-prescient
   :ensure t
+  :after counsel
   :config
-    (setq prescient-persist-mode t)
-    (ivy-prescient-mode t)
-  :hook 'after-init)
+    (prescient-persist-mode t)
+    (ivy-prescient-mode t))
 
 (use-package key-chord
   :ensure t
