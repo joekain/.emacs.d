@@ -67,7 +67,9 @@
 
 (use-package linum
   :ensure t
-  :config (global-linum-mode 1))
+  :config
+    (global-linum-mode 1)
+    (add-hook 'org-mode-hook (lambda () (linum-mode -1))))
 
 (use-package yasnippet
   :ensure t
