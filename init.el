@@ -28,10 +28,7 @@
 	  ivy-initial-inputs-alist nil)
     (ivy-mode 1)
     (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
-    (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
-  :bind
-    ("M-x" . counsel-M-x)
-    ("C-x C-f)" . counsel-find-file))
+    (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done))
 
 (use-package ivy-prescient
   :ensure t
