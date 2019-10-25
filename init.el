@@ -107,6 +107,8 @@
 
 (setq-default show-trailing-whitespace t)
 
+
+;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")
 (load "local")
 
