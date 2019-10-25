@@ -68,8 +68,16 @@
 (use-package linum
   :ensure t
   :config
-    (global-linum-mode 1)
-    (add-hook 'org-mode-hook (lambda () (linum-mode -1))))
+    (global-linum-mode 1))
+
+(use-package org
+  :config
+  :config (add-hook 'org-mode-hook
+		    (lambda ()
+		      ;; Disable linum as it doesn't perform well on
+		      ;; folded org
+		      (linum-mode -1)
+		      (setq org-log-done 'time))))
 
 (use-package yasnippet
   :ensure t
