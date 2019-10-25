@@ -105,6 +105,8 @@
     (smartparens-global-mode t)
     (show-smartparens-global-mode t))
 
+(tool-bar-mode -1)
+
 (setq-default show-trailing-whitespace t)
 
 
