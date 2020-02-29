@@ -3,3 +3,5 @@ elpa
 recentf
 local/
 var/
+/tramp
+transient/
