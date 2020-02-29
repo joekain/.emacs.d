@@ -100,11 +100,11 @@
   :ensure t
   :config (key-chord-define-global "vv"
 	   (defhydra hydra-quick ()
-	      "Quick Access Commands"
-	      ("q" query-replace "query-replace")
-	      ("d" deadgrep "deadgrep")
-	      ("f" fill-paragraph "fill-paragraph")
-	      ("m" make-frame "make-frame"))))
+	     "Quick Access Commands"
+	     ("q" query-replace "query-replace" :exit t)
+	     ("d" deadgrep "deadgrep" :exit t)
+	     ("f" fill-paragraph "fill-paragraph" :exit t)
+	     ("m" make-frame "make-frame" :exit t))))
 
 
 (use-package smartparens-config
@@ -114,6 +114,9 @@
     (show-smartparens-global-mode t))
 
 (use-package magit
+  :ensure t)
+
+(use-package avy
   :ensure t)
 
 (tool-bar-mode -1)
