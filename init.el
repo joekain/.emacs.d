@@ -131,6 +131,10 @@
   :load-path "./agenda.el"
   :ensure nil)
 
+(use-package file-list
+  :load-path "./file-list.el"
+  :ensure nil)
+
 ;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")
 (load "local")
