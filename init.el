@@ -127,6 +127,9 @@
 
 (setq-default show-trailing-whitespace t)
 
+(use-package agenda
+  :load-path "./agenda.el"
+  :ensure nil)
 
 ;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")
