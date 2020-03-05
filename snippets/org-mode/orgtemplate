@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Org Template
+# key: orgtem
+# --
+* Org Stuff
+#+STARTUP: indent
+#+TODO: TODO(t) | DONE
+#+TODO: Q(q) | ANS(a)
+#+TODO: TEST FAIL(f) | PASS(p) NA(n)
+#+TODO: SUMMARIZE | SUMMARY
