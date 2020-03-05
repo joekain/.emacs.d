@@ -62,7 +62,11 @@
 
 (use-package ace-window
   :ensure t
-  :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  :config
+    (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+    (custom-set-faces
+     '(aw-leading-char-face
+       ((t (:inherit ace-jump-face-foreground :height 3.0)))))
   :bind ("C-x o" . ace-window))
 
 (use-package linum
