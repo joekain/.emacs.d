@@ -47,4 +47,4 @@
         ))
 
 
-(provide 'jnk-agenda)
+(provide 'agenda)
