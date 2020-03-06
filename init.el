@@ -127,6 +127,10 @@
 
 (setq-default show-trailing-whitespace t)
 
+;; Local config should set
+;;     (setq deft-directory "<notes>")
+(use-package deft
+  :ensure t)
 
 ;; Local modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
