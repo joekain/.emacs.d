@@ -83,6 +83,9 @@
 		      (linum-mode -1)
 		      (setq org-log-done 'time))))
 
+(use-package org-ql
+  :ensure t)
+
 (use-package yasnippet
   :ensure t
   :config (yas-global-mode 1))
@@ -99,17 +102,6 @@
 
 (use-package deadgrep
   :ensure t)
-
-(use-package hydra
-  :ensure t
-  :config (key-chord-define-global "vv"
-	   (defhydra hydra-quick ()
-	     "Quick Access Commands"
-	     ("q" query-replace "query-replace" :exit t)
-	     ("d" deadgrep "deadgrep" :exit t)
-	     ("f" fill-paragraph "fill-paragraph" :exit t)
-	     ("m" make-frame "make-frame" :exit t))))
-
 
 (use-package smartparens-config
   :ensure smartparens
@@ -139,6 +131,24 @@
 
 (use-package file-list
   :ensure nil)
+
+(use-package nav-bm
+  :ensure nil
+  :config (nav-bm-init))
+
+
+;; Now that everything is loaded build a hydra for quick access
+(use-package hydra
+  :ensure t
+  :config (key-chord-define-global "vv"
+	   (defhydra hydra-quick ()
+	     "Quick Access Commands"
+	     ("q" query-replace "query-replace" :exit t)
+	     ("d" deadgrep "deadgrep" :exit t)
+	     ("f" fill-paragraph "fill-paragraph" :exit t)
+	     ("m" make-frame "make-frame" :exit t)
+	     ("n" hydra-nav-bm/body "Nav Chart" :exit t))))
+
 
 ;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")
