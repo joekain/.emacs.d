@@ -132,26 +132,29 @@
 (use-package file-list
   :ensure nil)
 
+(use-package major-mode-hydra
+  :ensure t)
+
+(pretty-hydra-define hydra-quick
+    (:foreign-keys warn :title "Quick Access Commands" :quit-key "q")
+    ("Search"
+     (("q" query-replace "query-replace" :exit t)
+      ("d" deadgrep "deadgrep" :exit t))
+
+     "Edit"
+     (("f" fill-paragraph "fill-paragraph" :exit t)
+      ("m" make-frame "make-frame" :exit t))
+      ))
+
 (use-package nav-bm
   :ensure nil
   :config (nav-bm-init))
 
-
-;; Now that everything is loaded build a hydra for quick access
-(use-package hydra
-  :ensure t
-  :config (key-chord-define-global "vv"
-	   (defhydra hydra-quick ()
-	     "Quick Access Commands"
-	     ("q" query-replace "query-replace" :exit t)
-	     ("d" deadgrep "deadgrep" :exit t)
-	     ("f" fill-paragraph "fill-paragraph" :exit t)
-	     ("m" make-frame "make-frame" :exit t)
-	     ("n" hydra-nav-bm/body "Nav Chart" :exit t))))
-
-
 ;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")
 (load "local")
+
+(key-chord-define-global "vv" 'hydra-quick/body)
+
 
 (setq custom-file "~/.emacs.d/custom.el")

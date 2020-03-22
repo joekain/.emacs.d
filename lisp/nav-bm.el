@@ -37,10 +37,11 @@
 			  (org-open-link-from-string headline))))
 	    :caller 'counsel-nav-bm))
 
-(defhydra hydra-nav-bm ()
-  "Navigation Commands"
-  ("f" nav-bm-set-file "Set Navigational Chart file" :exit t)
-  ("m" nav-bm-capture "Save a Nav Mark" :exit t)
-  ("g" counsel-nav-bm "Go to a Nav Mark" :exit t))
+(pretty-hydra-define+ hydra-quick ()
+    ("Navigation"
+     (("S" nav-bm-set-file "Set Navigational Chart file" :exit t)
+      ("s" nav-bm-capture "Save a Nav Mark" :exit t)
+      ("g" counsel-nav-bm "Go to a Nav Mark" :exit t))
+     ))
 
 (provide 'nav-bm)
