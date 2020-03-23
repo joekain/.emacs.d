@@ -150,6 +150,14 @@
   :ensure nil
   :config (nav-bm-init))
 
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
+(use-package jnk-dashboard
+  :ensure nil)
+(setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+
 ;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")
 (load "local")
