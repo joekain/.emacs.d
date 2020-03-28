@@ -124,7 +124,32 @@
 (use-package deft
   :ensure t)
 
-;; Local modules in lisp/ directory
+(use-package major-mode-hydra
+  :ensure t
+  :config
+    ;; Build a menu to give quick access to frequently used commands
+    (pretty-hydra-define hydra-quick
+      (:foreign-keys warn :title "Quick Access Commands" :quit-key "q")
+      ("Search"
+       (("q" query-replace "query-replace" :exit t)
+	("d" deadgrep "deadgrep" :exit t))
+
+       "Edit"
+       (("f" fill-paragraph "fill-paragraph" :exit t)
+	("m" make-frame "make-frame" :exit t))
+       ))
+    (key-chord-define-global "vv" 'hydra-quick/body))
+
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
+
+(use-package undo-tree
+  :ensure t
+  :config (global-undo-tree-mode))
+
+;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda
   :ensure nil)
@@ -132,41 +157,16 @@
 (use-package file-list
   :ensure nil)
 
-(use-package major-mode-hydra
-  :ensure t)
-
-(pretty-hydra-define hydra-quick
-    (:foreign-keys warn :title "Quick Access Commands" :quit-key "q")
-    ("Search"
-     (("q" query-replace "query-replace" :exit t)
-      ("d" deadgrep "deadgrep" :exit t))
-
-     "Edit"
-     (("f" fill-paragraph "fill-paragraph" :exit t)
-      ("m" make-frame "make-frame" :exit t))
-      ))
-
 (use-package nav-bm
   :ensure nil
   :config (nav-bm-init))
 
-(use-package dashboard
-  :ensure t
-  :config
-  (dashboard-setup-startup-hook))
 (use-package jnk-dashboard
   :ensure nil)
 (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
-(use-package undo-tree
-  :ensure t
-  :config (global-undo-tree-mode))
-
 ;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")
 (load "local")
-
-(key-chord-define-global "vv" 'hydra-quick/body)
-
 
 (setq custom-file "~/.emacs.d/custom.el")
