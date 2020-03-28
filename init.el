@@ -158,6 +158,10 @@
   :ensure nil)
 (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
+(use-package undo-tree
+  :ensure t
+  :config (global-undo-tree-mode))
+
 ;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")
 (load "local")
