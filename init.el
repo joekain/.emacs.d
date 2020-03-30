@@ -132,11 +132,13 @@
       (:foreign-keys warn :title "Quick Access Commands" :quit-key "q")
       ("Search"
        (("q" query-replace "query-replace" :exit t)
-	("d" deadgrep "deadgrep" :exit t))
+	("d" deadgrep "deadgrep" :exit t)
+	("a" swiper-all "swiper-all" :exit t))
 
-       "Edit"
+       "Misc"
        (("f" fill-paragraph "fill-paragraph" :exit t)
-	("m" make-frame "make-frame" :exit t))
+	("m" make-frame "make-frame" :exit t)
+	("c" org-capture "org-capture" :exit t))
        ))
     (key-chord-define-global "vv" 'hydra-quick/body))
 
