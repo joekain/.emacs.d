@@ -151,6 +151,17 @@
   :ensure t
   :config (global-undo-tree-mode))
 
+
+(use-package ws-butler
+  :ensure t
+  :config (add-hook 'prog-mode-hook #'ws-butler-mode))
+
+
+(use-package clang-format+
+  :ensure t
+  :config (add-hook 'c-mode-common-hook #'clang-format+-mode))
+
+
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda
