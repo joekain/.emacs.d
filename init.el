@@ -161,6 +161,15 @@
   :ensure t
   :config (add-hook 'c-mode-common-hook #'clang-format+-mode))
 
+(use-package ctrlf
+  :ensure t
+  :config (ctrlf-mode +1))
+
+(use-package perspective
+  :ensure t
+  :config (persp-mode -1)  ;; Disabled for now, try it out manually
+  :bind (("C-x b" . persp-ivy-switch-buffer)
+	 ("C-x k" . persp-kill-buffer*)))
 
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
