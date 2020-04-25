@@ -163,7 +163,7 @@
 
 (use-package ctrlf
   :ensure t
-  :config (ctrlf-mode +1))
+  :config (ctrlf-mode -1))
 
 (use-package perspective
   :ensure t
