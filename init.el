@@ -20,34 +20,54 @@
 
 
 ;; Enable and configure packages
+
+(use-package key-chord
+  :ensure t)
+
+(use-package use-package-chords
+  :ensure t
+  :config (key-chord-mode 1))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Include different the selection frameworks and try them
+
+(use-package prescient
+  :ensure t
+  :config
+  (prescient-persist-mode t))
+
+;; ivy/counsel
 (use-package counsel
   :ensure t
   :config
     (setq ivy-use-virtual-buffers t
 	  enable-recursive-minibuffers t
 	  ivy-initial-inputs-alist nil)
-    (ivy-mode 1)
+    (ivy-mode -1)
     (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
     (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done))
 
-(use-package prescient)
 (use-package ivy-prescient
   :ensure t
   :after counsel
   :config
     (prescient-persist-mode t)
-    (ivy-prescient-mode t))
+    (ivy-prescient-mode -1))
 
-(use-package key-chord
+(use-package selectrum
   :ensure t
   :config
-    (key-chord-define-global "jj" 'counsel-M-x)
-    )
-
-
-(use-package use-package-chords
+  (selectrum-mode 1)
+  (key-chord-define-global "jj" 'execute-extended-command))
+(use-package selectrum-prescient
   :ensure t
-  :config (key-chord-mode 1))
+  :config (selectrum-prescient-mode 1))
+
+;; Done selection frameworks
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 (use-package recentf
   :ensure t
