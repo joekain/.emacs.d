@@ -187,6 +187,10 @@
   :ensure nil)
 (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
+(use-package kill-current-buffer
+  :ensure nil
+  :config (global-set-key (kbd "C-x k") 'kill-current-buffer))
+
 ;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")
 (load "local")
