@@ -43,7 +43,7 @@
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/Documents/notes/todo/todo.org" "Tasks")
-         "* TODO %?\n  %i\n  %a")
+         "* TODO %?\n")
         ))
 
 
