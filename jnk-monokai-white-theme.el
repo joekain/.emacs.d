@@ -8,6 +8,8 @@
  '(fixed-pitch ((t (:family "Monospace"))))
  '(variable-pitch ((((type w32)) (:foundry "outline" :family "Arial")) (t (:family "Sans Serif"))))
  '(escape-glyph ((t (:foreground "#878473"))))
+ '(org-todo ((t (:foreground "#ff0000"))))
+ '(org-done ((t (:foreground "#00ff00"))))
  '(homoglyph ((((background dark)) (:foreground "cyan")) (((type pc)) (:foreground "magenta")) (t (:foreground "brown"))))
  '(minibuffer-prompt ((t (:foreground "#5FD7FF"))))
  '(highlight ((t (:background "#C0C0C0"))))
