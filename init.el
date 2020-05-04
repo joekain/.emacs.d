@@ -82,10 +82,8 @@
        ((t (:inherit ace-jump-face-foreground :height 3.0)))))
   :bind ("C-x o" . ace-window))
 
-(use-package linum
-  :ensure t
-  :config
-    (global-linum-mode 1))
+(when (version<= "26.0.50" emacs-version )
+  (global-display-line-numbers-mode))
 
 (use-package org
   :config
