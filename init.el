@@ -15,7 +15,7 @@
   (global-set-key [mouse-5] 'scroll-up-line)
   )
 
-(load-theme 'jnk-monokai-black t)
+(load-theme 'jnk-monokai-white t)
 
 ;; Package setup from https://dev.to/huytd/emacs-from-scratch-1cg6
 (require 'package)
