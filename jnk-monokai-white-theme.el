@@ -10,6 +10,8 @@
  '(escape-glyph ((t (:foreground "#878473"))))
  '(org-todo ((t (:foreground "#ff0000"))))
  '(org-done ((t (:foreground "#00ff00"))))
+ '(line-number ((t (:foreground "#0099cc"))))
+ '(line-number-current-line ((t (:foreground "#0099cc"))))
  '(homoglyph ((((background dark)) (:foreground "cyan")) (((type pc)) (:foreground "magenta")) (t (:foreground "brown"))))
  '(minibuffer-prompt ((t (:foreground "#5FD7FF"))))
  '(highlight ((t (:background "#C0C0C0"))))
