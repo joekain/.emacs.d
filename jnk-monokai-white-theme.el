@@ -13,7 +13,7 @@
  '(line-number ((t (:foreground "#0099cc"))))
  '(line-number-current-line ((t (:foreground "#0099cc"))))
  '(homoglyph ((((background dark)) (:foreground "cyan")) (((type pc)) (:foreground "magenta")) (t (:foreground "brown"))))
- '(minibuffer-prompt ((t (:foreground "#5FD7FF"))))
+ '(minibuffer-prompt ((t (:foreground "#0099cc"))))
  '(highlight ((t (:background "#C0C0C0"))))
  '(region ((t (:background "#C0C0C0" :inherit (highlight)))))
  '(shadow ((t (:foreground "#878473"))))
