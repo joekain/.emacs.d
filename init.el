@@ -7,15 +7,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Terminal stuff
 (unless (display-graphic-p)
-  (load-theme 'jnk-monokai-black t)
-
   (require 'mwheel)
   (require 'mouse)
   (xterm-mouse-mode t)
   (mouse-wheel-mode t)
   (global-set-key [mouse-4] 'scroll-down-line)
   (global-set-key [mouse-5] 'scroll-up-line)
-)
+  )
+
+(load-theme 'jnk-monokai-black t)
 
 ;; Package setup from https://dev.to/huytd/emacs-from-scratch-1cg6
 (require 'package)

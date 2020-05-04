@@ -3,13 +3,13 @@
 
 (custom-theme-set-faces
  'jnk-monokai-black
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground "#F5F5F5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1 :width normal :foundry "default" :family "default"))))
+ '(default ((t (:inherit nil :stipple nil :background "black" :foreground "#F5F5F5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "default" :family "Monospace"))))
  '(cursor ((t (:inverse-video t :foreground "#1B1E1C" :background "#F5F5F5"))))
  '(fixed-pitch ((t (:family "Monospace"))))
  '(variable-pitch ((((type w32)) (:foundry "outline" :family "Arial")) (t (:family "Sans Serif"))))
  '(escape-glyph ((t (:foreground "#8B8878"))))
- '(org-todo ((t (:foreground "color-196"))))
- '(org-done ((t (:foreground "color-46"))))
+ '(org-todo ((t (:foreground "#ff0000"))))
+ '(org-done ((t (:foreground "#00ff00"))))
  '(homoglyph ((((background dark)) (:foreground "cyan")) (((type pc)) (:foreground "magenta")) (t (:foreground "brown"))))
  '(minibuffer-prompt ((t (:foreground "#5FD7FF"))))
  '(highlight ((t (:background "#474747"))))
