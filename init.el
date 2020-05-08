@@ -41,7 +41,8 @@
 	  ivy-initial-inputs-alist nil)
     (ivy-mode 1)
     (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
-    (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done))
+    (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
+    (global-set-key (kbd "M-j") 'counsel-M-x))
 
 (use-package prescient)
 (use-package ivy-prescient
@@ -52,11 +53,7 @@
     (ivy-prescient-mode t))
 
 (use-package key-chord
-  :ensure t
-  :config
-    (key-chord-define-global "jj" 'counsel-M-x)
-    )
-
+  :ensure t)
 
 (use-package use-package-chords
   :ensure t
@@ -151,7 +148,7 @@
 	("m" make-frame "make-frame" :exit t)
 	("c" org-capture "org-capture" :exit t))
        ))
-    (key-chord-define-global "vv" 'hydra-quick/body))
+    (global-set-key (kbd "M-v") 'hydra-quick/body))
 
 (use-package dashboard
   :ensure t
