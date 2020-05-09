@@ -89,7 +89,9 @@
 		      ;; Disable linum as it doesn't perform well on
 		      ;; folded org
 		      (linum-mode -1)
-		      (setq org-log-done 'time))))
+		      (setq org-log-done 'time)
+		      (local-set-key (kbd "C-j") 'org-beginning-of-line)
+		      (local-set-key (kbd "C-;") 'org-end-of-line))))
 
 (use-package org-ql
   :ensure t)
@@ -198,6 +200,17 @@
 (use-package kill-current-buffer
   :ensure nil
   :config (global-set-key (kbd "C-x k") 'kill-current-buffer))
+
+(use-package expand-region
+  :ensure t)
+
+;; Remap some keys to avoid pinching with my left hand
+(global-set-key (kbd "C-j") 'move-beginning-of-line)
+(global-set-key (kbd "C-;") 'move-end-of-line)
+(global-set-key (kbd "C-n") 'isearch-forward)
+(global-set-key (kbd "C-b") 'isearch-backward)
+(global-set-key (kbd "C-h") 'delete-char)
+
 
 ;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")
