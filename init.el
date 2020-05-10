@@ -204,13 +204,13 @@
 (use-package expand-region
   :ensure t)
 
-;; Remap some keys to avoid pinching with my left hand
-(global-set-key (kbd "C-j") 'move-beginning-of-line)
-(global-set-key (kbd "C-;") 'move-end-of-line)
-(global-set-key (kbd "C-n") 'isearch-forward)
-(global-set-key (kbd "C-b") 'isearch-backward)
-(global-set-key (kbd "C-h") 'delete-char)
-
+(use-package jnk-keys
+  :ensure nil
+  :bind
+  ("M-d" . #'jnk-keys-move-region/body)
+  ("M-k" . #'jnk-keys-org/body)
+  ("M-v" . #'jnk-keys-quick-access/body)
+  )
 
 ;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")
