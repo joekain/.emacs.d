@@ -1,34 +1,33 @@
 (defhydra jnk-keys-move-region (:color pink :hint nil)
   "
 ^Movement^                                             ^Region^
-_a_: move-beginning-of-line   _g_: goto-line             _m_: set-mark-command
-_e_: move-end-of-line         _v_: avy-goto-char-timer   _k_: kill-region
-_f_: forward-word             _z_: beginning-of-buffer   _l_: copy-region-as-kill
-_b_: backward-word            _c_: end-of-buffer         _u_: undo
-_x_: er/expand-region         _w_: backward-sexp         _p_: query-replace
-                            _t_: forward-sexp          _j_: extended-command
+_a_: beginning-of-line   _g_: goto-line              : set-mark
+_e_: end-of-line         _v_: avy-goto-char-timer   _k_: kill-region
+_f_: forward-word        _z_: beginning-of-buffer   _l_: copy-region
+_b_: backward-word       _c_: end-of-buffer         _u_: undo
+_x_: er/expand-region    _d_: forward-sexp          _p_: query-replace
+_r_: return              _s_: backward-sexp         _j_: extended-command
 "
   ("a" move-beginning-of-line)
   ("e" move-end-of-line)
   ("f" forward-word)
   ("b" backward-word)
   ("x" er/expand-region)
+  ("r" jnk-keys-move-region-return)
 
   ("A" move-beginning-of-line :exit t)
   ("E" move-end-of-line :exit t)
   ("F" forward-word :exit t)
   ("B" backward-word :exit t)
   ("X" er/expand-region :exit t)
-
-  ;; ("s" isearch-forward)
-  ;; ("r" isearch-backward)
+  ("R" jnk-keys-move-region-return :exit t)
 
   ("g" goto-line)
   ("v" avy-goto-char-timer)
   ("z" beginning-of-buffer)
   ("c" end-of-buffer)
-  ("w" backward-sexp)
-  ("t" forward-sexp)
+  ("d" forward-sexp)
+  ("s" backward-sexp)
 
   ("G" goto-line :exit t)
   ("V" avy-goto-char-timer :exit t)
@@ -37,14 +36,13 @@ _x_: er/expand-region         _w_: backward-sexp         _p_: query-replace
   ("W" backward-sexp :exit t)
   ("T" forward-sexp :exit t)
 
-  ("m" set-mark-command)
+  ("<SPC>" set-mark-command)
   ("k" kill-region)
   ("l" copy-region-as-kill)
   ("u" undo)
   ("p" query-replace)
   ("j" counsel-M-x)
 
-  ("M" set-mark-command :exit t)
   ("K" kill-region :exit t)
   ("L" copy-region-as-kill :exit t)
   ("U" undo :exit t)
@@ -53,6 +51,20 @@ _x_: er/expand-region         _w_: backward-sexp         _p_: query-replace
 
   ("q" nil)
   )
+
+(defun jnk-keys-move-region-wrapper ()
+  "A wrapper around the jnk-keys-move-region hydra that saves the
+   initial location.  The location can be restored by the hydra
+   if desired."
+  (interactive)
+  (bookmark-set "jnk-keys-bookmark")
+  (jnk-keys-move-region/body)
+  )
+
+(defun jnk-keys-move-region-return ()
+  (interactive)
+  (bookmark-jump "jnk-keys-bookmark"))
+
 
 (defhydra jnk-keys-file-buffer (:color teal :hint nil)
   "
@@ -71,6 +83,7 @@ _r_: recent file   _k_: kill-buffer                        _l_: list-buffers
   ("q" nil)
   )
 
+
 (defhydra jnk-keys-windows-frames (:color teal :hint nil)
   "
 _2_: split window  _1_: delete-other-windows  _f_: new-frame
@@ -82,10 +95,10 @@ _2_: split window  _1_: delete-other-windows  _f_: new-frame
   ("f" new-frame)
   ("d" delete-frame))
 
+
 (defhydra jnk-keys-org (:color pink :hint nil)
   "
-Heading: sfed   Subtree: jlik
-_a_: Agenda     _A_: archive  _c_: Capture
+Heading: sfed   Subtree: jlik   _a_: archive
 "
   ("s" org-metaleft)
   ("f" org-metaright)
@@ -106,10 +119,8 @@ _a_: Agenda     _A_: archive  _c_: Capture
   ("I" org-metaup :exit t)
   ("K" org-metadown :exit t)
 
-  ("a" org-agenda :exit t)
-  ("A" org-archive-subtree)
-  ("c" org-capture)
-  ("C" org-capture :exit t)
+  ("a" org-archive-subtree)
+  ("A" org-archive-subtree :exit)
 
   ("q" nil))
 
@@ -118,12 +129,13 @@ _a_: Agenda     _A_: archive  _c_: Capture
   "
 _s_: save  _u_: undo  _;_:  comment   _q_: query  _S_: Set Chart
 _f_: fill  _r_: redo  _/_:  complete  _d_: rg     _m_: bookmark
-         _v_ tree   _b_: buffer     _x_: xref   _g_: goto meark
+_c_: cap   _v_ tree   _b_: buffer     _x_: xref   _g_: goto meark
          _W_: Windows             _F_: Files / Buffers
 "
 
   ("s" save-buffer)
   ("f" fill-paragraph)
+  ("c" org-capture)
   ("u" undo)
   ("r" redo)
   ("v" undo-tree-visualize)
@@ -137,7 +149,7 @@ _f_: fill  _r_: redo  _/_:  complete  _d_: rg     _m_: bookmark
   ("m" nav-bm-capture)
   ("g" counsel-nav-bm)
   ("W" jnk-keys-windows-frames/body)
-  ("F" jnk-keys-file-buffer)
+  ("F" jnk-keys-file-buffer/body)
   )
 
 (provide 'jnk-keys)

@@ -83,7 +83,7 @@
   (global-display-line-numbers-mode))
 
 (use-package org
-  :config
+  :ensure t
   :config (add-hook 'org-mode-hook
 		    (lambda ()
 		      ;; Disable linum as it doesn't perform well on
@@ -135,22 +135,7 @@
   :ensure t)
 
 (use-package major-mode-hydra
-  :ensure t
-  :config
-    ;; Build a menu to give quick access to frequently used commands
-    (pretty-hydra-define hydra-quick
-      (:foreign-keys warn :title "Quick Access Commands" :quit-key "q")
-      ("Search"
-       (("q" query-replace "query-replace" :exit t)
-	("d" deadgrep "deadgrep" :exit t)
-	("a" swiper-all "swiper-all" :exit t))
-
-       "Misc"
-       (("f" fill-paragraph "fill-paragraph" :exit t)
-	("m" make-frame "make-frame" :exit t)
-	("c" org-capture "org-capture" :exit t))
-       ))
-    (global-set-key (kbd "M-v") 'hydra-quick/body))
+  :ensure t)
 
 (use-package dashboard
   :ensure t
@@ -207,9 +192,11 @@
 (use-package jnk-keys
   :ensure nil
   :bind
-  ("M-d" . #'jnk-keys-move-region/body)
-  ("M-k" . #'jnk-keys-org/body)
-  ("M-v" . #'jnk-keys-quick-access/body)
+  ("M-d" . #'jnk-keys-move-region-wrapper)
+  ("M-n" . #'jnk-keys-quick-access/body)
+  ("M-h" . nil)
+  (:map org-mode-map
+	("M-h" . #'jnk-keys-org/body))
   )
 
 ;; Allow local customization in local/local.el
