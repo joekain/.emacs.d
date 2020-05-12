@@ -1,26 +1,24 @@
 (defhydra jnk-keys-move-region (:color pink :hint nil)
   "
-^Movement^                                             ^Region^
-_a_: beginning-of-line   _g_: goto-line              : set-mark
+Movement                                             Region
+_a_: beginning-of-line   _g_: goto-line             ^ ^: set-mark
 _e_: end-of-line         _v_: avy-goto-char-timer   _k_: kill-region
 _f_: forward-word        _z_: beginning-of-buffer   _l_: copy-region
 _b_: backward-word       _c_: end-of-buffer         _u_: undo
 _x_: er/expand-region    _d_: forward-sexp          _p_: query-replace
-_r_: return              _s_: backward-sexp         _j_: extended-command
+^ ^                      _s_: backward-sexp         _j_: extended-command
 "
   ("a" move-beginning-of-line)
   ("e" move-end-of-line)
   ("f" forward-word)
   ("b" backward-word)
   ("x" er/expand-region)
-  ("r" jnk-keys-move-region-return)
 
   ("A" move-beginning-of-line :exit t)
   ("E" move-end-of-line :exit t)
   ("F" forward-word :exit t)
   ("B" backward-word :exit t)
   ("X" er/expand-region :exit t)
-  ("R" jnk-keys-move-region-return :exit t)
 
   ("g" goto-line)
   ("v" avy-goto-char-timer)
@@ -49,7 +47,12 @@ _r_: return              _s_: backward-sexp         _j_: extended-command
   ("P" query-replace :exit t)
   ("J" counsel-M-x :exit t)
 
+  ;; r
+  ;; w
+  ;; t
+
   ("q" nil)
+  ("Q" jnk-keys-move-region-return :exit t)
   )
 
 (defun jnk-keys-move-region-wrapper ()
@@ -69,7 +72,7 @@ _r_: return              _s_: backward-sexp         _j_: extended-command
 (defhydra jnk-keys-file-buffer (:color teal :hint nil)
   "
 _f_: find-file     _s_: save-buffer  _o_: ff-get-other-file  _b_: switch-buffer
-_r_: recent file   _k_: kill-buffer                        _l_: list-buffers
+_r_: recent file   _k_: kill-buffer  ^ ^                     _l_: list-buffers
 
 "
 
@@ -87,7 +90,7 @@ _r_: recent file   _k_: kill-buffer                        _l_: list-buffers
 (defhydra jnk-keys-windows-frames (:color teal :hint nil)
   "
 _2_: split window  _1_: delete-other-windows  _f_: new-frame
-                 _0_: delete-window         _d_: delete-frame
+^ ^                _0_: delete-window         _d_: delete-frame
 "
   ("2" split-window-below)
   ("1" delete-other-windows)
