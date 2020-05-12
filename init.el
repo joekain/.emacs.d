@@ -86,9 +86,8 @@
   :ensure t
   :config (add-hook 'org-mode-hook
 		    (lambda ()
-		      ;; Disable linum as it doesn't perform well on
-		      ;; folded org
-		      (linum-mode -1)
+		      (when (version<= "26.0.50" emacs-version )
+			(display-line-numbers-mode -1))
 		      (setq org-log-done 'time)
 		      (local-set-key (kbd "C-j") 'org-beginning-of-line)
 		      (local-set-key (kbd "C-;") 'org-end-of-line))))
