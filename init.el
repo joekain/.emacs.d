@@ -88,9 +88,7 @@
 		    (lambda ()
 		      (when (version<= "26.0.50" emacs-version )
 			(display-line-numbers-mode -1))
-		      (setq org-log-done 'time)
-		      (local-set-key (kbd "C-j") 'org-beginning-of-line)
-		      (local-set-key (kbd "C-;") 'org-end-of-line))))
+		      (setq org-log-done 'time))))
 
 (use-package org-ql
   :ensure t)
@@ -161,9 +159,7 @@
 
 (use-package perspective
   :ensure t
-  :config (persp-mode -1)  ;; Disabled for now, try it out manually
-  :bind (("C-x b" . persp-ivy-switch-buffer)
-	 ("C-x k" . persp-kill-buffer*)))
+  :config (persp-mode -1)  ;; Disabled for now, try it out manually)
 
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
