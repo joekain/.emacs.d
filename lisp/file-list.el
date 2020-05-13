@@ -24,14 +24,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; User function
 ;;
-;; This is really just an example.  It reads the list of files from
-;; /tmp/filelist.  Users should create there own file lists for their
-;; projects and then write a function like the one below.
-;; Name your function after your project and use the project filelist.
+;; This is useful as is but can also be used as an example.  Users
+;; should set counsel-open-from-filelist-filelist to configure this
+;; for their needs.  Alternatively, write a similar function with your
+;; own list.
 
-(defun counsel-example-filelist (&optional initial-input)
-  "Find file listed in /tmp/filelist"
+(defvar counsel-open-from-filelist-filelist "/tmp/filelist"
+  "Set this variable to point to a file listing a set of files.
+counsel-open-from-filelist will select from this list."
+  )
+
+(defun counsel-open-from-filelist (&optional initial-input)
   (interactive)
-  (counsel-file-list--1 "/tmp/filelist"))
+  (counsel-file-list--1 counsel-open-from-filelist-filelist))
 
 (provide 'file-list)

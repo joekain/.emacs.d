@@ -141,12 +141,13 @@ Heading: sfed   Subtree: jlik   _a_: archive
 _s_: save  _u_: undo  _;_:  comment   _q_: query  _S_: Set Chart
 _f_: fill  _r_: redo  _/_:  complete  _d_: rg     _m_: bookmark
 _c_: cap   _v_ tree   _b_: buffer     _x_: xref   _g_: goto meark
-         _W_: Windows             _F_: Files / Buffers
+_o_: open  _W_: Windows               _F_: Files / Buffers
 "
 
   ("s" save-buffer)
   ("f" fill-paragraph)
   ("c" org-capture)
+  ("o" counsel-open-from-filelist)
   ("u" undo)
   ("r" redo)
   ("v" undo-tree-visualize)
