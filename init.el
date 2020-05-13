@@ -159,7 +159,7 @@
 
 (use-package perspective
   :ensure t
-  :config (persp-mode -1)  ;; Disabled for now, try it out manually)
+  :config (persp-mode -1))  ;; Disabled for now, try it out manually
 
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
