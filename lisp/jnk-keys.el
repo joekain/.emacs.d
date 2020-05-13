@@ -131,7 +131,7 @@ Heading: sfed   Subtree: jlik   _a_: archive
   ("K" org-metadown :exit t)
 
   ("a" org-archive-subtree)
-  ("A" org-archive-subtree :exit)
+  ("A" org-archive-subtree :exit t)
 
   ("q" nil))
 
