@@ -5,30 +5,22 @@ _a_: beginning-of-line   _g_: goto-line             ^ ^: set-mark
 _e_: end-of-line         _v_: avy-goto-char-timer   _k_: kill-region
 _f_: forward-word        _z_: beginning-of-buffer   _l_: copy-region
 _b_: backward-word       _c_: end-of-buffer         _u_: undo
-_x_: er/expand-region    _t_: forward-sexp          _p_: query-replace
-_s_/_r_: search            _w_: backward-sexp         _j_: extended-command
+_x_: expand-region       _t_: forward-sexp          _p_: query-replace
+_s_: search              _w_: backward-sexp         _j_: extended-command
 "
   ("a" move-beginning-of-line)
   ("e" move-end-of-line)
   ("f" forward-word)
   ("b" backward-word)
   ("x" er/expand-region)
-  ("s" (lambda ()
-	 (interactive)
-	 (isearch-forward)
-	 (jnk-keys-move-region/body)) :color pink :exit t)
-  ("r" (lambda ()
-	 (interactive)
-	 (isearch-backward)
-	 (jnk-keys-move-region/body)) :color pink :exit t)
+  ("s" swiper-isearch)
 
   ("A" move-beginning-of-line :exit t)
   ("E" move-end-of-line :exit t)
   ("F" forward-word :exit t)
   ("B" backward-word :exit t)
   ("X" er/expand-region :exit t)
-  ("S" isearch-forward)
-  ("R" isearch-backward)
+  ("S" swiper-isearch)
 
   ("g" goto-line)
   ("v" avy-goto-char-timer)
@@ -58,6 +50,7 @@ _s_/_r_: search            _w_: backward-sexp         _j_: extended-command
   ("J" counsel-M-x :exit t)
 
   ;; d
+  ;; r
 
   ("q" nil)
   ("Q" jnk-keys-move-region-return :exit t)
