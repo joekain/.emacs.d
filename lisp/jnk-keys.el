@@ -1,12 +1,12 @@
 (defhydra jnk-keys-move-region (:color pink :hint nil)
   "
-Movement                                             Region
-_a_: beginning-of-line   _g_: goto-line             ^ ^: set-mark
-_e_: end-of-line         _v_: avy-goto-char-timer   _k_: kill-region
-_f_: forward-word        _z_: beginning-of-buffer   _l_: copy-region
-_b_: backward-word       _c_: end-of-buffer         _u_: undo
-_x_: expand-region       _t_: forward-sexp          _p_: query-replace
-_s_: search              _w_: backward-sexp         _j_: extended-command
+Movement                                        Region
+_a_: beginning-of-line   _g_: goto-line             ^ ^: set-mark          _;_ comment
+_e_: end-of-line         _z_: beginning-of-buffer   _k_: kill-region       _n_ fill
+_f_: forward-word        _c_: end-of-buffer         _l_: copy-region       _t_ table
+_b_: backward-word       _t_: forward-sexp          _u_: undo
+_x_: expand-region       _w_: backward-sexp         _p_: query-replace
+_s_: search              ^ ^                        _j_: extended-command
 "
   ("a" move-beginning-of-line)
   ("e" move-end-of-line)
@@ -36,6 +36,10 @@ _s_: search              _w_: backward-sexp         _j_: extended-command
   ("W" backward-sexp :exit t)
   ("T" forward-sexp :exit t)
 
+  ;; d
+  ;; r
+  ;; v
+
   ("<SPC>" set-mark-command)
   ("k" kill-region)
   ("l" copy-region-as-kill)
@@ -49,8 +53,13 @@ _s_: search              _w_: backward-sexp         _j_: extended-command
   ("P" query-replace :exit t)
   ("J" counsel-M-x :exit t)
 
-  ;; d
-  ;; r
+  (";" comment-dwim)
+  ("n" fill-region)
+  ("t" org-table-create-or-convert-from-region)
+
+  (":" comment-dwim :exit t)
+  ("N" fill-region :exit t)
+  ("T" org-table-create-or-convert-from-region :exit t)
 
   ("q" nil)
   ("Q" jnk-keys-move-region-return :exit t)
@@ -61,7 +70,8 @@ _s_: search              _w_: backward-sexp         _j_: extended-command
    initial location.  The location can be restored by the hydra
    if desired."
   (interactive)
-  (bookmark-set "jnk-keys-bookmark")
+  (ignore-errors
+    (bookmark-set "jnk-keys-bookmark"))
   (jnk-keys-move-region/body)
   )
 
