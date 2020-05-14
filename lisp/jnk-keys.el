@@ -3,8 +3,8 @@
 Movement                                        Region
 _a_: beginning-of-line   _g_: goto-line             ^ ^: set-mark          _;_ comment
 _e_: end-of-line         _z_: beginning-of-buffer   _k_: kill-region       _n_ fill
-_f_: forward-word        _c_: end-of-buffer         _l_: copy-region       _t_ table
-_b_: backward-word       _t_: forward-sexp          _u_: undo
+_f_: forward-word        _c_: end-of-buffer         _l_: copy-region       _o_ org table
+_b_: backward-word       _t_: forward-sexp          _u_: undo              _h_ eval
 _x_: expand-region       _w_: backward-sexp         _p_: query-replace
 _s_: search              ^ ^                        _j_: extended-command
 "
@@ -55,11 +55,13 @@ _s_: search              ^ ^                        _j_: extended-command
 
   (";" comment-dwim)
   ("n" fill-region)
-  ("t" org-table-create-or-convert-from-region)
+  ("o" org-table-create-or-convert-from-region)
+  ("h" eval-region)
 
   (":" comment-dwim :exit t)
   ("N" fill-region :exit t)
-  ("T" org-table-create-or-convert-from-region :exit t)
+  ("O" org-table-create-or-convert-from-region :exit t)
+  ("H" eval-region :exit t)
 
   ("q" nil)
   ("Q" jnk-keys-move-region-return :exit t)
