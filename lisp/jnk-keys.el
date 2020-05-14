@@ -143,30 +143,35 @@ Heading: sfed   Subtree: jlik   _a_: archive
 
 (defhydra jnk-keys-quick-access (:color blue :hint nil)
   "
-_s_: save  _u_: undo  _;_:  comment   _q_: query  _S_: Set Chart
-_f_: fill  _r_: redo  _/_:  complete  _d_: rg     _m_: bookmark
-_c_: cap   _v_ tree   _b_: buffer     _x_: xref   _g_: goto meark
-_o_: open  _W_: Windows               _F_: Files / Buffers
+_s_: save  _u_: undo  _;_: comment    _p_: query  _S_: Set Chart
+_f_: fill  _r_: redo  _/_: complete   _d_: rg     _m_: bookmark
+_c_: cap   _v_ tree   _b_: buffer     _x_: xref   _g_: goto mark
+_o_: open  _W_: Win   _R_: Region     _F_: Files / Buffers
 "
 
   ("s" save-buffer)
   ("f" fill-paragraph)
   ("c" org-capture)
   ("o" counsel-open-from-filelist)
-  ("u" undo)
-  ("r" redo)
+  ("u" undo :color pink)
+  ("U" undo)
+  ("r" redo :color pink)
+  ("R" redo)
   ("v" undo-tree-visualize)
   (";" comment-dwim)
-  ("/" dabbrev-expand)
+  ("/" dabbrev-expand :color pink)
+  ("?" dabbrev-expand)
   ("b" counsel-switch-buffer)
-  ("q" query-replace)
+  ("p" query-replace)
   ("d" deadgrep)
   ("x" xref-find-definitions)
   ("S" nav-bm-set-file)
   ("m" nav-bm-capture)
   ("g" counsel-nav-bm)
   ("W" jnk-keys-windows-frames/body)
+  ("R" jnk-keys-move-region-wrapper)
   ("F" jnk-keys-file-buffer/body)
+  ("q" nil :exit t)
   )
 
 (provide 'jnk-keys)
