@@ -184,6 +184,9 @@
 (use-package expand-region
   :ensure t)
 
+(use-package crux
+  :ensure t)
+
 (use-package jnk-keys
   :ensure nil
   :bind

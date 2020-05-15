@@ -2,10 +2,10 @@
   "
 Movement                                        Region
 _a_: beginning-of-line   _g_: goto-line             ^ ^: set-mark          _;_ comment
-_e_: end-of-line         _z_: beginning-of-buffer   _k_: kill-region       _n_ fill
+_e_: end-of-line         _z_: beginning-of-buffer   _k_: kill-region       _,_ comment/duplicate
 _f_: forward-word        _c_: end-of-buffer         _l_: copy-region       _o_ org table
 _b_: backward-word       _t_: forward-sexp          _u_: undo              _h_ eval
-_x_: expand-region       _w_: backward-sexp         _p_: query-replace
+_x_: expand-region       _w_: backward-sexp         _p_: query-replace     _n_ fill
 _s_: search              ^ ^                        _j_: extended-command
 "
   ("a" move-beginning-of-line)
@@ -54,14 +54,16 @@ _s_: search              ^ ^                        _j_: extended-command
   ("J" counsel-M-x :exit t)
 
   (";" comment-dwim)
-  ("n" fill-region)
+  ("," crux-duplicate-and-comment-current-line-or-region)
   ("o" org-table-create-or-convert-from-region)
   ("h" eval-region)
+  ("n" fill-region)
 
   (":" comment-dwim :exit t)
-  ("N" fill-region :exit t)
+  ("<" crux-duplicate-and-comment-current-line-or-region :exit t)
   ("O" org-table-create-or-convert-from-region :exit t)
   ("H" eval-region :exit t)
+  ("N" fill-region :exit t)
 
   ("q" nil)
   ("Q" jnk-keys-move-region-return :exit t)
@@ -143,19 +145,18 @@ Heading: sfed   Subtree: jlik   _a_: archive
 
 (defhydra jnk-keys-quick-access (:color blue :hint nil)
   "
-_s_: save  _u_: undo  _;_: comment    _p_: query  _S_: Set Chart
+_s_: save  _u_: undo  _;_: comment    _p_: query  _S_: Set Chart  _k_ kill line
 _f_: fill  _r_: redo  _/_: complete   _d_: rg     _m_: bookmark
 _c_: cap   _v_ tree   _b_: buffer     _x_: xref   _g_: goto mark
 _o_: open  _W_: Win   _R_: Region     _F_: Files / Buffers
 "
-
   ("s" save-buffer)
   ("f" fill-paragraph)
   ("c" org-capture)
   ("o" counsel-open-from-filelist)
   ("u" undo :color pink)
-  ("U" undo)
   ("r" redo :color pink)
+  ("U" undo)
   ("R" redo)
   ("v" undo-tree-visualize)
   (";" comment-dwim)
@@ -171,6 +172,8 @@ _o_: open  _W_: Win   _R_: Region     _F_: Files / Buffers
   ("W" jnk-keys-windows-frames/body)
   ("R" jnk-keys-move-region-wrapper)
   ("F" jnk-keys-file-buffer/body)
+  ("k" crux-kill-whole-line :color pink)
+  ("K" crux-kill-whole-line)
   ("q" nil :exit t)
   )
 
