@@ -8,14 +8,14 @@ _b_: backward-word       _t_: forward-sexp          _u_: undo              _h_ e
 _x_: expand-region       _w_: backward-sexp         _p_: query-replace     _n_ fill
 _s_: search              ^ ^                        _j_: extended-command
 "
-  ("a" move-beginning-of-line)
+  ("a" crux-move-beginning-of-line)
   ("e" move-end-of-line)
   ("f" forward-word)
   ("b" backward-word)
   ("x" er/expand-region)
   ("s" swiper-isearch)
 
-  ("A" move-beginning-of-line :exit t)
+  ("A" crux-move-beginning-of-line :exit t)
   ("E" move-end-of-line :exit t)
   ("F" forward-word :exit t)
   ("B" backward-word :exit t)
