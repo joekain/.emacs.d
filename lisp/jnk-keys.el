@@ -69,19 +69,22 @@ _s_: search              ^ ^                        _j_: extended-command
   ("Q" jnk-keys-move-region-return :exit t)
   )
 
+(defvar jnk-keys-marker)
+
 (defun jnk-keys-move-region-wrapper ()
   "A wrapper around the jnk-keys-move-region hydra that saves the
    initial location.  The location can be restored by the hydra
    if desired."
   (interactive)
-  (ignore-errors
-    (bookmark-set "jnk-keys-bookmark"))
+
+  (setq jnk-keys-marker (point-marker))
   (jnk-keys-move-region/body)
   )
 
 (defun jnk-keys-move-region-return ()
   (interactive)
-  (bookmark-jump "jnk-keys-bookmark"))
+  (let ((buf  (marker-buffer jnk-keys-marker)))
+    (switch-to-buffer buf)(goto-char jnk-keys-marker)))
 
 
 (defhydra jnk-keys-file-buffer (:color teal :hint nil)
