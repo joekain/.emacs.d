@@ -162,7 +162,7 @@ Heading: sfed   Subtree: jlik   _a_: archive
   "
 _s_: save  _u_: undo  _;_: comment    _p_: query  _S_: Set Chart  _k_ kill line
 _f_: fill  _r_: redo  _/_: complete   _d_: rg     _m_: bookmark   _n_ spell
-_c_: cap   _v_ tree   _b_: buffer     _x_: xref   _g_: goto mark
+_c_: cap   _v_ tree   _b_: buffer     _x_: xref   _g_: goto mark  _a_ rg cwd
 _o_: open  _W_: Win   _R_: Region     _F_: Files / Buffers
 "
   ("s" save-buffer)
@@ -191,7 +191,14 @@ _o_: open  _W_: Win   _R_: Region     _F_: Files / Buffers
   ("K" crux-kill-whole-line)
   ("n" flyspell-correct-wrapper :color pink)
   ("N" flyspell-correct-wrapper)
+  ("a" rg-cwd)
   ("q" nil :exit t)
+  )
+
+(defun rg-cwd ()
+  (interactive)
+  (let ((deadgrep-project-root-function (lambda () default-directory)))
+    (call-interactively 'deadgrep))
   )
 
 (provide 'jnk-keys)
