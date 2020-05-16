@@ -149,7 +149,7 @@ Heading: sfed   Subtree: jlik   _a_: archive
 (defhydra jnk-keys-quick-access (:color blue :hint nil)
   "
 _s_: save  _u_: undo  _;_: comment    _p_: query  _S_: Set Chart  _k_ kill line
-_f_: fill  _r_: redo  _/_: complete   _d_: rg     _m_: bookmark
+_f_: fill  _r_: redo  _/_: complete   _d_: rg     _m_: bookmark   _n_ spell
 _c_: cap   _v_ tree   _b_: buffer     _x_: xref   _g_: goto mark
 _o_: open  _W_: Win   _R_: Region     _F_: Files / Buffers
 "
@@ -177,6 +177,8 @@ _o_: open  _W_: Win   _R_: Region     _F_: Files / Buffers
   ("F" jnk-keys-file-buffer/body)
   ("k" crux-kill-whole-line :color pink)
   ("K" crux-kill-whole-line)
+  ("n" flyspell-correct-wrapper :color pink)
+  ("N" flyspell-correct-wrapper)
   ("q" nil :exit t)
   )
 

@@ -165,6 +165,30 @@
 (use-package crux
   :ensure t)
 
+(use-package abbrev
+  :ensure nil
+  :custom
+  (abbrev-file-name (expand-file-name ".abbrev_defs" user-emacs-directory))
+  (abbrev-mode 1)
+  :config
+  (if (file-exists-p abbrev-file-name)
+      (quietly-read-abbrev-file)))
+
+(use-package flyspell
+  :custom
+  (flyspell-abbrev-p t)
+  (flyspell-issue-message-flag nil)
+  (flyspell-issue-welcome-flag nil)
+  (flyspell-mode 1))
+
+(use-package flyspell-correct
+  :ensure t
+  :after flyspell)
+
+(use-package flyspell-correct-ivy
+  :ensure t
+  :after flyspell-correct)
+
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda
