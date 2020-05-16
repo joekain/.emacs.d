@@ -120,7 +120,8 @@ _2_: split window  _1_: delete-other-windows  _f_: new-frame
 
 (defhydra jnk-keys-org (:color pink :hint nil)
   "
-Heading: sfed   Subtree: jlik   _a_: archive
+Heading: sfed   Subtree: jlik   _a_: archive  _u_: fold up
+_n_: insert       _m_: ins-close    _c_: closeup  _v_: close-edit  _t_: todo
 "
   ("s" org-metaleft)
   ("f" org-metaright)
@@ -135,7 +136,6 @@ Heading: sfed   Subtree: jlik   _a_: archive
   ("l" org-shiftmetaright)
   ("i" org-metaup)
   ("k" org-metadown)
-
   ("J" org-shiftmetaleft :exit t)
   ("L" org-shiftmetaright :exit t)
   ("I" org-metaup :exit t)
@@ -143,6 +143,21 @@ Heading: sfed   Subtree: jlik   _a_: archive
 
   ("a" org-archive-subtree)
   ("A" org-archive-subtree :exit t)
+
+  ("u" jnk-keys-org-fold-up)
+  ("n" jnk-keys-org-insert-next)
+  ("m" jnk-keys-org-insert-next-and-close)
+  ("c" jnk-keys-org-close-up)
+  ("v" jnk-keys-org-close-and-edit)
+  ("t" org-todo)
+
+  ("U" jnk-keys-org-fold-up :exit t)
+  ("N" jnk-keys-org-insert-next :exit t)
+  ("M" jnk-keys-org-insert-next-and-close :exit t)
+  ("C" jnk-keys-org-close-up :exit t)
+  ("V" jnk-keys-org-close-and-edit :exit t)
+  ("T" org-todo :exit t)
+
 
   ("q" nil)
   ("Q" jnk-keys-return :exit t)
@@ -156,6 +171,44 @@ Heading: sfed   Subtree: jlik   _a_: archive
 
   (setq jnk-keys-marker (point-marker))
   (jnk-keys-org/body)
+  )
+
+(defun jnk-keys-org-fold-up ()
+  (interactive)
+  (outline-hide-subtree)
+  (outline-previous-visible-heading 1)
+  )
+
+(defun jnk-keys-org-insert-next ()
+  (interactive)
+  (outline-hide-subtree)
+  (org-insert-heading-respect-content)
+  )
+
+(defun jnk-keys-org-insert-next-and-close ()
+  (interactive)
+  (jnk-keys-org-close-up)
+  (org-insert-heading-respect-content)
+  )
+
+(defun jnk-keys-org-close-up ()
+  (interactive)
+  (outline-hide-subtree)
+  (let ((org-use-fast-todo-selection nil))
+    (org-todo))
+  )
+
+(defun jnk-keys-org-close-and-edit ()
+  (interactive)
+  (outline-previous-visible-heading 1)
+  (if (org-get-todo-state)
+      (progn
+	(let ((org-use-fast-todo-selection nil))
+	  (org-todo))
+	(forward-symbol 1))
+    )
+  (forward-symbol 1)
+  (forward-char 1)
   )
 
 (defhydra jnk-keys-quick-access (:color blue :hint nil)
