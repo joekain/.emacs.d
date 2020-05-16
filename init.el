@@ -189,6 +189,10 @@
   :ensure t
   :after flyspell-correct)
 
+(use-package company
+  :ensure t
+  :config (global-company-mode 1))
+
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda
