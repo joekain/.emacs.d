@@ -143,11 +143,9 @@
   :ensure t
   :config (global-undo-tree-mode))
 
-
 (use-package ws-butler
   :ensure t
   :config (add-hook 'prog-mode-hook #'ws-butler-mode))
-
 
 (use-package clang-format+
   :ensure t
@@ -160,6 +158,12 @@
 (use-package perspective
   :ensure t
   :config (persp-mode -1))  ;; Disabled for now, try it out manually
+
+(use-package expand-region
+  :ensure t)
+
+(use-package crux
+  :ensure t)
 
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
@@ -180,12 +184,6 @@
 (use-package kill-current-buffer
   :ensure nil
   :config (global-set-key (kbd "C-x k") 'kill-current-buffer))
-
-(use-package expand-region
-  :ensure t)
-
-(use-package crux
-  :ensure t)
 
 (use-package jnk-keys
   :ensure nil
