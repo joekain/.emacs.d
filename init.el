@@ -220,7 +220,7 @@
   ("M-n" . #'jnk-keys-quick-access/body)
   ("M-h" . nil)
   (:map org-mode-map
-	("M-h" . #'jnk-keys-org/body))
+	("M-h" . #'jnk-keys-org-wrapper))
   )
 
 ;; Allow local customization in local/local.el

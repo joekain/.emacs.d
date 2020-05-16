@@ -66,7 +66,7 @@ _s_: search              ^ ^                        _j_: extended-command
   ("N" fill-region :exit t)
 
   ("q" nil)
-  ("Q" jnk-keys-move-region-return :exit t)
+  ("Q" jnk-keys-return :exit t)
   )
 
 (defvar jnk-keys-marker)
@@ -81,7 +81,7 @@ _s_: search              ^ ^                        _j_: extended-command
   (jnk-keys-move-region/body)
   )
 
-(defun jnk-keys-move-region-return ()
+(defun jnk-keys-return ()
   (interactive)
   (let ((buf  (marker-buffer jnk-keys-marker)))
     (switch-to-buffer buf)(goto-char jnk-keys-marker)))
@@ -143,8 +143,19 @@ Heading: sfed   Subtree: jlik   _a_: archive
   ("a" org-archive-subtree)
   ("A" org-archive-subtree :exit t)
 
-  ("q" nil))
+  ("q" nil)
+  ("Q" jnk-keys-return :exit t)
+  )
 
+(defun jnk-keys-org-wrapper ()
+  "A wrapper around the jnk-keys-org hydra that saves the initial
+   location.  The location can be restored by the hydra if
+   desired."
+  (interactive)
+
+  (setq jnk-keys-marker (point-marker))
+  (jnk-keys-org/body)
+  )
 
 (defhydra jnk-keys-quick-access (:color blue :hint nil)
   "
