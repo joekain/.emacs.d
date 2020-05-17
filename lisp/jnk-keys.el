@@ -6,7 +6,7 @@ _e_: end-of-line         _z_: beginning-of-buffer   _k_: kill-region       _,_ c
 _f_: forward-word        _c_: end-of-buffer         _l_: copy-region       _o_ org table
 _b_: backward-word       _t_: forward-sexp          _u_: undo              _h_ eval
 _x_: expand-region       _w_: backward-sexp         _p_: query-replace     _n_ fill
-_s_: search              ^ ^                        _j_: extended-command  _._ deactivate
+_s_: search              _'_: duplicate             _j_: extended-command  _._ deactivate
 "
   ("a" crux-move-beginning-of-line)
   ("e" move-end-of-line)
@@ -59,12 +59,14 @@ _s_: search              ^ ^                        _j_: extended-command  _._ d
   ("h" eval-region)
   ("n" fill-region)
   ("." keyboard-quit)  ;; deactivates the mark
+  ("'" crux-duplicate-current-line-or-region)
 
   (":" comment-dwim :exit t)
   ("<" crux-duplicate-and-comment-current-line-or-region :exit t)
   ("O" org-table-create-or-convert-from-region :exit t)
   ("H" eval-region :exit t)
   ("N" fill-region :exit t)
+  ("\"" crux-duplicate-current-line-or-region :exit t)
 
   ("q" nil)
   ("Q" jnk-keys-return :exit t)
