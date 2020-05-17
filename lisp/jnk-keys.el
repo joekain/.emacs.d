@@ -197,6 +197,9 @@ _n_: insert       _m_: ins-close    _c_: closeup  _v_: close-edit  _t_: todo
   (outline-hide-subtree)
   (let ((org-use-fast-todo-selection nil))
     (org-todo))
+  (if (not (org-at-heading-p))
+      (outline-previous-visible-heading 1)
+      )
   )
 
 
