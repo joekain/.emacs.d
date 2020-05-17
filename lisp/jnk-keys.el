@@ -45,13 +45,13 @@ _s_: search              _'_: duplicate             _j_: extended-command  _._ d
   ("l" copy-region-as-kill)
   ("u" undo)
   ("p" query-replace)
-  ("j" counsel-M-x)
+  ("j" extended-command)
 
   ("K" kill-region :exit t)
   ("L" copy-region-as-kill :exit t)
   ("U" undo :exit t)
   ("P" query-replace :exit t)
-  ("J" counsel-M-x :exit t)
+  ("J" extended-command :exit t)
 
   (";" comment-dwim)
   ("," crux-duplicate-and-comment-current-line-or-region)
@@ -99,7 +99,7 @@ _r_: recent file   _k_: kill-buffer  ^ ^                     _l_: list-buffers
 
   ("f" find-file)
   ("o" ff-get-other-file)
-  ("r" counsel-recentf)
+  ("r" crux-recentf-find-file)
   ("s" save-buffer)
   ("b" persp-ivy-switch-buffer)
   ("k" kill-current-buffer)
@@ -160,7 +160,6 @@ _n_: insert       _m_: ins-close    _c_: closeup  _v_: close-edit  _t_: todo
   ("V" jnk-keys-org-close-and-edit :exit t)
   ("T" org-todo :exit t)
 
-
   ("q" nil)
   ("Q" jnk-keys-return :exit t)
   )
@@ -200,6 +199,7 @@ _n_: insert       _m_: ins-close    _c_: closeup  _v_: close-edit  _t_: todo
     (org-todo))
   )
 
+
 (defun jnk-keys-org-close-and-edit ()
   (interactive)
   (outline-previous-visible-heading 1)
@@ -232,7 +232,7 @@ _o_: open  _W_: Win   _R_: Region     _F_: Files / Buffers
   (";" comment-dwim)
   ("/" dabbrev-expand :color pink)
   ("?" dabbrev-expand)
-  ("b" counsel-switch-buffer)
+  ("b" switch-buffer)
   ("p" query-replace)
   ("d" deadgrep)
   ("x" xref-find-definitions)
