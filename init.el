@@ -171,7 +171,10 @@
 
 (use-package ws-butler
   :ensure t
-  :config (add-hook 'prog-mode-hook #'ws-butler-mode))
+  :config
+  (add-hook 'prog-mode-hook #'ws-butler-mode)
+  (add-hook 'org-mode-hook #'ws-butler-mode)
+  )
 
 (use-package clang-format+
   :ensure t
