@@ -122,13 +122,14 @@ _2_: split window  _1_: delete-other-windows  _f_: new-frame
 
 (defhydra jnk-keys-org (:color pink :hint nil)
   "
-Heading: sfed   Subtree: jlik   _a_: archive  _u_: fold up
+Heading: sfed   Subtree: jlik   _a_: archive  _u_: fold up     _r_: return
 _n_: insert       _m_: ins-close    _c_: closeup  _v_: close-edit  _t_: todo
 "
   ("s" org-metaleft)
   ("f" org-metaright)
   ("e" org-shiftmetaup)
   ("d" org-shiftmetadown)
+  ("r" jnk-keys-return)
   ("S" org-metaleft :exit t)
   ("F" org-metaright :exit t)
   ("E" org-shiftmetaup :exit t)
