@@ -39,7 +39,7 @@
 
 (use-package use-package-chords
   :ensure t
-  :config (key-chord-mode 1))
+  :config (key-chord-mode -1))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -74,7 +74,7 @@
   :ensure t
   :config
   (selectrum-mode 1)
-  (key-chord-define-global "jj" 'execute-extended-command))
+  :bind ("M-j" . execute-extended-command))
 (use-package selectrum-prescient
   :ensure t
   :config (selectrum-prescient-mode 1))
