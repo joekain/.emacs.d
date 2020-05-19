@@ -45,13 +45,13 @@ _s_: search              _'_: duplicate             _j_: extended-command  _._ d
   ("l" copy-region-as-kill)
   ("u" undo)
   ("p" query-replace)
-  ("j" extended-command)
+  ("j" execute-extended-command)
 
   ("K" kill-region :exit t)
   ("L" copy-region-as-kill :exit t)
   ("U" undo :exit t)
   ("P" query-replace :exit t)
-  ("J" extended-command :exit t)
+  ("J" execute-extended-command :exit t)
 
   (";" comment-dwim)
   ("," crux-duplicate-and-comment-current-line-or-region)
