@@ -87,9 +87,12 @@
   :config
     (setq recentf-max-saved-items 500
 	  recentf-max-menu-items 15
-	  ;; disable recentf-cleanup on Emacs start, because it can cause
-	  ;; problems with remote files
-	  recentf-auto-cleanup 'never)
+	  recentf-exclude '("^/var/folders\\.*"
+			    "COMMIT_EDITMSG\\'"
+			    ".*-autoloads\\.el\\'"
+			    "[/\\]\\.elpa/"
+			    )
+	  )
     (recentf-mode +1)
   :bind ("C-c f" . crux-recentf-find-file))
 
