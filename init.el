@@ -244,13 +244,7 @@
 
 (use-package jnk-keys
   :ensure nil
-  :bind
-  ("M-d" . #'jnk-keys-move-region-wrapper)
-  ("M-n" . #'jnk-keys-quick-access/body)
-  ("M-h" . nil)
-  (:map org-mode-map
-	("M-h" . #'jnk-keys-org-wrapper))
-  )
+  :config (jnk-keys-minor-mode 1))
 
 ;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")

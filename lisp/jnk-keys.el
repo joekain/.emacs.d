@@ -265,4 +265,17 @@ _o_: open  _W_: Win   _R_: Region     _F_: Files / Buffers
     (call-interactively 'deadgrep))
   )
 
+(defvar jnk-keys-minor-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "M-d") 'jnk-keys-move-region-wrapper)
+    (define-key map (kbd "M-n") 'jnk-keys-quick-access/body)
+    (define-key map (kbd "M-h") 'jnk-keys-org-wrapper)
+    map)
+  "jnk-keys-minor-mode keymap.")
+
+(define-minor-mode jnk-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  :init-value t
+  :lighter " jnk-keys")
+
 (provide 'jnk-keys)
