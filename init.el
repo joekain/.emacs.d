@@ -222,6 +222,10 @@
   :ensure t
   :config (global-company-mode 1))
 
+(use-package company-prescient
+  :ensure t
+  :config (company-prescient-mode 1))
+
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda
