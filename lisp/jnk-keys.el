@@ -36,9 +36,12 @@ _s_: search              _'_: duplicate             _j_: extended-command  _._ d
   ("W" backward-sexp :exit t)
   ("T" forward-sexp :exit t)
 
+  ("r" scroll-down-command)
+  ("v" scroll-up-command)
+  ("R" scroll-down-command :exit t)
+  ("V" scroll-up-command :exit t)
   ;; d
-  ;; r
-  ;; v
+
 
   ("<SPC>" set-mark-command)
   ("k" kill-region)
