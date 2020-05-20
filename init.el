@@ -219,7 +219,9 @@
 
 (use-package company
   :ensure t
-  :config (global-company-mode 1))
+  :config
+  (setq company-dabbrev-downcase nil)
+  (global-company-mode 1))
 
 (use-package company-prescient
   :ensure t
