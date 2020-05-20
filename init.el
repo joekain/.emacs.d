@@ -102,8 +102,7 @@
     (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
     (custom-set-faces
      '(aw-leading-char-face
-       ((t (:inherit ace-jump-face-foreground :height 3.0)))))
-  :bind ("C-x o" . ace-window))
+       ((t (:inherit ace-jump-face-foreground :height 3.0))))))
 
 (when (version<= "26.0.50" emacs-version )
   (global-display-line-numbers-mode))
