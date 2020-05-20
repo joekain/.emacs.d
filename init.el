@@ -226,6 +226,9 @@
   :ensure t
   :config (company-prescient-mode 1))
 
+(use-package savehist
+  :config (savehist-mode 1))
+
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda
