@@ -1,4 +1,4 @@
-(defhydra jnk-keys-move-region (:color pink :hint nil)
+(defhydra jnk-keys-move-region (:color pink :hint nil :timeout 2)
   "
 Movement                                        Region
 _a_: beginning-of-line   _g_: goto-line             ^ ^: set-mark          _;_ comment
@@ -93,7 +93,7 @@ _s_: search              _'_: duplicate             _j_: extended-command  _._ d
     (switch-to-buffer buf)(goto-char jnk-keys-marker)))
 
 
-(defhydra jnk-keys-file-buffer (:color teal :hint nil)
+(defhydra jnk-keys-file-buffer (:color teal :hint nil :timeout 2)
   "
 _f_: find-file     _s_: save-buffer  _o_: ff-get-other-file  _b_: switch-buffer
 _r_: recent file   _k_: kill-buffer  ^ ^                     _l_: list-buffers
@@ -111,7 +111,7 @@ _r_: recent file   _k_: kill-buffer  ^ ^                     _l_: list-buffers
   )
 
 
-(defhydra jnk-keys-windows-frames (:color teal :hint nil)
+(defhydra jnk-keys-windows-frames (:color teal :hint nil :timeout 2)
   "
 _2_: split window  _1_: delete-other-windows  _f_: new-frame
 ^ ^                _0_: delete-window         _d_: delete-frame
@@ -123,7 +123,7 @@ _2_: split window  _1_: delete-other-windows  _f_: new-frame
   ("d" delete-frame))
 
 
-(defhydra jnk-keys-org (:color pink :hint nil)
+(defhydra jnk-keys-org (:color pink :hint nil :timeout 2)
   "
 Heading: sfed   Subtree: jlik   _a_: archive  _u_: fold up     _r_: return
 _n_: insert       _m_: ins-close    _c_: closeup  _v_: close-edit  _t_: todo
@@ -222,7 +222,7 @@ _n_: insert       _m_: ins-close    _c_: closeup  _v_: close-edit  _t_: todo
   (forward-char 1)
   )
 
-(defhydra jnk-keys-quick-access (:color blue :hint nil)
+(defhydra jnk-keys-quick-access (:color blue :hint nil :timeout 2)
   "
 _s_: save  _u_: undo  _;_: comment    _p_: query  _S_: Set Chart  _k_ kill line
 _f_: fill  _r_: redo  _/_: complete   _d_: rg     _m_: bookmark   _n_ spell
