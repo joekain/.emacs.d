@@ -207,15 +207,18 @@
   (flyspell-abbrev-p t)
   (flyspell-issue-message-flag nil)
   (flyspell-issue-welcome-flag nil)
-  (flyspell-mode 1))
+  :config
+  (add-hook 'prog-mode-hook #'flyspell-prog-mode)
+  (add-hook 'text-mode-hook #'turn-on-flyspell)
+  (add-hook 'org-mode-hook  #'turn-on-flyspell))
 
 (use-package flyspell-correct
   :ensure t
   :after flyspell)
 
-(use-package flyspell-correct-ivy
-  :ensure t
-  :after flyspell-correct)
+;; (use-package flyspell-correct-ivy
+;;   :ensure t
+;;   :after flyspell-correct)
 
 (use-package company
   :ensure t
