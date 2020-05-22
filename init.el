@@ -93,8 +93,7 @@
 			    "[/\\]\\.elpa/"
 			    )
 	  )
-    (recentf-mode +1)
-  :bind ("C-c f" . crux-recentf-find-file))
+    (recentf-mode +1))
 
 (use-package ace-window
   :ensure t
@@ -191,7 +190,8 @@
   :ensure t)
 
 (use-package crux
-  :ensure t)
+  :ensure t
+  :bind ("C-c f" . crux-recentf-find-file))
 
 (use-package abbrev
   :ensure nil
