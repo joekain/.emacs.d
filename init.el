@@ -260,7 +260,10 @@
 
 (use-package jnk-keys
   :ensure nil
-  :config (jnk-keys-minor-mode 1))
+  :config (jnk-keys-minor-mode 1)
+  :bind (:map org-mode-map
+	      ("M-h" . #'jnk-keys-org-wrapper)))
+
 
 ;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")

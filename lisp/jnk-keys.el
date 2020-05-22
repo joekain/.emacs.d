@@ -269,7 +269,6 @@ _o_: open  _W_: Win   _R_: Region     _F_: Files / Buffers
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "M-d") 'jnk-keys-move-region-wrapper)
     (define-key map (kbd "M-n") 'jnk-keys-quick-access/body)
-    (define-key map (kbd "M-h") 'jnk-keys-org-wrapper)
     map)
   "jnk-keys-minor-mode keymap.")
 
