@@ -61,7 +61,7 @@
     (ivy-mode -1)
     (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
     (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
-    (global-set-key (kbd "M-j") 'counsel-M-x))
+    (global-set-key (kbd "M-x") 'counsel-M-x))
 
 (use-package ivy-prescient
   :ensure t
@@ -73,8 +73,7 @@
 (use-package selectrum
   :ensure t
   :config
-  (selectrum-mode 1)
-  :bind ("M-j" . execute-extended-command))
+  (selectrum-mode 1))
 (use-package selectrum-prescient
   :ensure t
   :config (selectrum-prescient-mode 1))
