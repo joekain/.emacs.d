@@ -165,7 +165,7 @@
 
 (use-package undo-tree
   :ensure t
-  :config (global-undo-tree-mode))
+  :config (global-undo-tree-mode -1))
 
 (use-package ws-butler
   :ensure t
@@ -242,6 +242,11 @@
 ;;   :ensure t
 ;;   :config
 ;;     (add-hook 'org-mode-hook #'literate-calc-minor-mode))
+
+
+(use-package undo-fu
+  :ensure t
+  :bind ("C-x u" . undo-fu-only-undo))
 
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
