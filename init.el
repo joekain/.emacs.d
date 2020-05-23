@@ -233,10 +233,10 @@
 (use-package savehist
   :config (savehist-mode 1))
 
-(use-package literate-calc-mode
-  :ensure t
-  :config
-    (add-hook 'org-mode-hook #'literate-calc-minor-mode))
+;; (use-package literate-calc-mode
+;;   :ensure t
+;;   :config
+;;     (add-hook 'org-mode-hook #'literate-calc-minor-mode))
 
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
