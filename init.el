@@ -218,10 +218,10 @@
   :ensure t
   :config (company-prescient-mode 1))
 
-;; (use-package company-fuzzy-mode
-;;   :ensure t
-;;   :config
-;;   (global-company-fuzzy-mode 1))
+(use-package company-fuzzy
+  :ensure t
+  :config
+  (global-company-fuzzy-mode 1))
 
 (use-package savehist
   :config (savehist-mode 1))
