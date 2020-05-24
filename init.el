@@ -41,35 +41,30 @@
   :ensure t
   :config (key-chord-mode -1))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; Include different the selection frameworks and try them
-
 (use-package prescient
   :ensure t
   :config
   (prescient-persist-mode t))
 
-;; ivy/counsel
+;; ivy/counsel - not primary selection
+;; Used for a few special functions and in some of my own functions.
 (use-package counsel
   :ensure t
   :config
     (setq ivy-use-virtual-buffers t
 	  enable-recursive-minibuffers t
 	  ivy-initial-inputs-alist nil)
-    (ivy-mode -1)
     (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
-    (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
-    (global-set-key (kbd "M-x") 'counsel-M-x))
+    (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done))
 
 (use-package ivy-prescient
   :ensure t
   :after counsel
   :config
     (prescient-persist-mode t)
-    (ivy-prescient-mode -1))
+    (ivy-prescient-mode 1))
 
+;; Selectrum used as primary selection
 (use-package selectrum
   :ensure t
   :config
@@ -78,9 +73,6 @@
 (use-package selectrum-prescient
   :ensure t
   :config (selectrum-prescient-mode 1))
-
-;; Done selection frameworks
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package recentf
   :ensure t
@@ -123,7 +115,7 @@
 
 (use-package dumb-jump
   :ensure t
-  :config (setq dumb-jump-selector 'ivy))
+  :config (setq dumb-jump-selector 'completing-read))
 
 (use-package keyfreq
   :ensure t
@@ -216,10 +208,6 @@
   :ensure t
   :after flyspell)
 
-;; (use-package flyspell-correct-ivy
-;;   :ensure t
-;;   :after flyspell-correct)
-
 (use-package company
   :ensure t
   :config
@@ -230,10 +218,10 @@
   :ensure t
   :config (company-prescient-mode 1))
 
-(use-package company-fuzzy-mode
-  :ensure t
-  :config
-  (global-company-fuzzy-mode 1))
+;; (use-package company-fuzzy-mode
+;;   :ensure t
+;;   :config
+;;   (global-company-fuzzy-mode 1))
 
 (use-package savehist
   :config (savehist-mode 1))
