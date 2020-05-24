@@ -142,11 +142,6 @@
 
 (setq-default show-trailing-whitespace t)
 
-;; Local config should set
-;;     (setq deft-directory "<notes>")
-(use-package deft
-  :ensure t)
-
 (use-package major-mode-hydra
   :ensure t)
 
