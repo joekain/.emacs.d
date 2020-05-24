@@ -211,7 +211,21 @@
 (use-package company
   :ensure t
   :config
-  (setq company-dabbrev-downcase nil)
+  (setq
+   company-dabbrev-downcase nil
+   company-idle-delay 0.2
+   company-minimum-prefix-length 1
+   company-selection-wrap-around t
+   company-tooltip-flip-when-above t
+   company-tooltip-align-annotations t
+   company-backends '((company-capf
+		       company-dabbrev
+		       company-dabbrev-code
+		       company-etags
+		       company-keywords
+		       company-files
+		       company-yasnippet)))
+  (company-tng-configure-default)
   (global-company-mode 1))
 
 (use-package company-prescient
