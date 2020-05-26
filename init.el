@@ -17,39 +17,41 @@
 
 (load-theme 'jnk-monokai-white t)
 
-;; Package setup from https://dev.to/huytd/emacs-from-scratch-1cg6
-(require 'package)
-(setq package-enable-at-startup nil)
-(setq package-archives '(("org"   . "http://orgmode.org/elpa/")
-                         ("gnu"   . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
-(package-initialize)
+;; Bootstrap straight package manager
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el"
+			 user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-;; Bootstrap `use-package`
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(require 'use-package)
-
+(straight-use-package 'use-package)
 
 ;; Enable and configure packages
 
 (use-package key-chord
-  :ensure t)
+  :straight t)
 
 (use-package use-package-chords
-  :ensure t
+  :straight t
   :config (key-chord-mode -1))
 
 (use-package prescient
-  :ensure t
+  :straight t
   :config
   (prescient-persist-mode t))
 
 ;; ivy/counsel - not primary selection
 ;; Used for a few special functions and in some of my own functions.
 (use-package counsel
-  :ensure t
+  :straight t
   :config
     (setq ivy-use-virtual-buffers t
 	  enable-recursive-minibuffers t
@@ -58,7 +60,7 @@
     (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done))
 
 (use-package ivy-prescient
-  :ensure t
+  :straight t
   :after counsel
   :config
     (prescient-persist-mode t)
@@ -66,16 +68,16 @@
 
 ;; Selectrum used as primary selection
 (use-package selectrum
-  :ensure t
+  :straight t
   :config
   (selectrum-mode 1))
 
 (use-package selectrum-prescient
-  :ensure t
+  :straight t
   :config (selectrum-prescient-mode 1))
 
 (use-package recentf
-  :ensure t
+  :straight t
   :config
     (setq recentf-max-saved-items 500
 	  recentf-max-menu-items 15
@@ -88,7 +90,7 @@
     (recentf-mode +1))
 
 (use-package ace-window
-  :ensure t
+  :straight t
   :config
     (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
     (custom-set-faces
@@ -99,7 +101,7 @@
   (global-display-line-numbers-mode))
 
 (use-package org
-  :ensure t
+  :straight t
   :config (add-hook 'org-mode-hook
 		    (lambda ()
 		      (when (version<= "26.0.50" emacs-version )
@@ -107,81 +109,80 @@
 		      (setq org-log-done 'time))))
 
 (use-package org-ql
-  :ensure t)
+  :straight t)
 
 (use-package yasnippet
-  :ensure t
+  :straight t
   :config (yas-global-mode 1))
 
 (use-package dumb-jump
-  :ensure t
+  :straight t
   :config (setq dumb-jump-selector 'completing-read))
 
 (use-package keyfreq
-  :ensure t
+  :straight t
   :config
     (keyfreq-mode 1)
     (keyfreq-autosave-mode 1))
 
 (use-package deadgrep
-  :ensure t)
+  :straight t)
 
 (use-package smartparens-config
-  :ensure smartparens
+  :straight smartparens
   :config
     (smartparens-global-mode t)
     (show-smartparens-global-mode t))
 
 (use-package magit
-  :ensure t)
+  :straight t)
 
 (use-package avy
-  :ensure t)
+  :straight t)
 
 (tool-bar-mode -1)
 
 (setq-default show-trailing-whitespace t)
 
 (use-package major-mode-hydra
-  :ensure t)
+  :straight t)
 
 (use-package dashboard
-  :ensure t
+  :straight t
   :config
   (dashboard-setup-startup-hook))
 
 (use-package undo-tree
-  :ensure t
+  :straight t
   :config (global-undo-tree-mode -1))
 
 (use-package ws-butler
-  :ensure t
+  :straight t
   :config
   (add-hook 'prog-mode-hook #'ws-butler-mode)
   (add-hook 'org-mode-hook #'ws-butler-mode)
   )
 
 (use-package clang-format+
-  :ensure t
+  :straight t
   :config (add-hook 'c-mode-common-hook #'clang-format+-mode))
 
 (use-package ctrlf
-  :ensure t
+  :straight t
   :config (ctrlf-mode -1))
 
 (use-package perspective
-  :ensure t
+  :straight t
   :config (persp-mode -1))  ;; Disabled for now, try it out manually
 
 (use-package expand-region
-  :ensure t)
+  :straight t)
 
 (use-package crux
-  :ensure t
+  :straight t
   :bind ("C-c f" . crux-recentf-find-file))
 
 (use-package abbrev
-  :ensure nil
   :custom
   (abbrev-file-name (expand-file-name ".abbrev_defs" user-emacs-directory))
   (abbrev-mode 1)
@@ -200,11 +201,11 @@
   (add-hook 'org-mode-hook  #'turn-on-flyspell))
 
 (use-package flyspell-correct
-  :ensure t
+  :straight t
   :after flyspell)
 
 (use-package company
-  :ensure t
+  :straight t
   :config
   (setq
    company-dabbrev-downcase nil
@@ -217,11 +218,11 @@
   (global-company-mode 1))
 
 (use-package company-prescient
-  :ensure t
+  :straight t
   :config (company-prescient-mode 1))
 
 (use-package company-fuzzy
-  :ensure t
+  :straight t
   :config
   (global-company-fuzzy-mode 1))
 
@@ -229,37 +230,31 @@
   :config (savehist-mode 1))
 
 ;; (use-package literate-calc-mode
-;;   :ensure t
+;;   :straight t
 ;;   :config
 ;;     (add-hook 'org-mode-hook #'literate-calc-minor-mode))
 
 
 (use-package undo-fu
-  :ensure t
+  :straight t
   :bind ("C-x u" . undo-fu-only-undo))
 
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
-(use-package agenda
-  :ensure nil)
+(use-package agenda)
 
-(use-package file-list
-  :ensure nil)
+(use-package file-list)
 
 (use-package nav-bm
-  :ensure nil
   :config (nav-bm-init))
 
-(use-package jnk-dashboard
-  :ensure nil)
+(use-package jnk-dashboard)
 (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
 (use-package kill-current-buffer
-  :ensure nil
   :config (global-set-key (kbd "C-x k") 'kill-current-buffer))
 
 (use-package jnk-keys
-  :ensure nil
   :config (jnk-keys-minor-mode 1)
   :bind (:map org-mode-map
 	      ("M-h" . #'jnk-keys-org-wrapper)))
