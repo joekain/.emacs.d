@@ -238,6 +238,9 @@
   :straight t
   :bind ("C-x u" . undo-fu-only-undo))
 
+(use-package keycast
+  :straight t)
+
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda)
