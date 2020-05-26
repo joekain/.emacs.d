@@ -76,6 +76,13 @@
   :straight t
   :config (selectrum-prescient-mode 1))
 
+(use-package orderless
+  :straight t
+  :config
+  (setq selectrum-refine-candidates-function #'orderless-filter
+	selectrum-highlight-candidates-function #'orderless-highlight-matches)
+  :custom (completion-styles '(orderless)))
+
 (use-package recentf
   :straight t
   :config
