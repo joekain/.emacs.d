@@ -265,10 +265,23 @@ _o_: open  _W_: Win   _R_: Region     _F_: Files / Buffers
     (call-interactively 'deadgrep))
   )
 
+
+(defhydra jnk-keys-compile (:color pink :hint nil)
+  "
+_i_: prev  _j_: next error  _c_: compile  _g_: recompile
+"
+  ("i" previous-error)
+  ("j" previous-error)
+  ("c" compile)
+  ("g" recompile)
+  ("q" nil)
+  )
+
 (defvar jnk-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "M-d") 'jnk-keys-move-region-wrapper)
     (define-key map (kbd "M-n") 'jnk-keys-quick-access/body)
+    (define-key map (kbd "M-c") 'jnk-keys-compile/body)
     map)
   "jnk-keys-minor-mode keymap.")
 
