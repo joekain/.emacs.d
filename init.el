@@ -249,7 +249,15 @@
   :straight t)
 
 (use-package anaconda-mode
-  :straight t)
+  :straight t
+  :config
+  (add-hook 'python-mode-hook 'anaconda-mode))
+
+(use-package company-anaconda
+  :straight t
+  :after company
+  :config
+  (add-to-list 'company-backends 'company-anaconda))
 
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
