@@ -248,6 +248,9 @@
 (use-package keycast
   :straight t)
 
+(use-package anaconda-mode
+  :straight t)
+
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda)
