@@ -268,12 +268,13 @@ _o_: open  _W_: Win   _R_: Region     _F_: Files / Buffers
 
 (defhydra jnk-keys-compile (:color pink :hint nil)
   "
-_i_: prev  _j_: next error  _c_: compile  _g_: recompile
+_i_: prev  _k_: next error  _c_: compile  _g_: recompile _f_: kill
 "
   ("i" previous-error)
-  ("j" previous-error)
-  ("c" compile)
-  ("g" recompile)
+  ("k" next-error)
+  ("c" compile :color blue)
+  ("g" recompile :color blue)
+  ("f" kill-compilation :color blue)
   ("q" nil)
   )
 
