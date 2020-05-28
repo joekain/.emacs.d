@@ -109,11 +109,14 @@
 
 (use-package org
   :straight t
-  :config (add-hook 'org-mode-hook
-		    (lambda ()
-		      (when (version<= "26.0.50" emacs-version )
-			(display-line-numbers-mode -1))
-		      (setq org-log-done 'time))))
+  :config
+  (add-hook 'org-mode-hook
+	    (lambda ()
+	      (when (version<= "26.0.50" emacs-version )
+		(display-line-numbers-mode -1))
+	      (setq org-log-done 'time)))
+  (setq org-startup-folded t)
+  )
 
 (use-package org-ql
   :straight t)
