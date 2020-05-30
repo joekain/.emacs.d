@@ -5,21 +5,21 @@ _a_: beginning-of-line   _g_: goto-line             ^ ^: set-mark          _;_ c
 _e_: end-of-line         _z_: beginning-of-buffer   _k_: kill-region       _,_ comment/duplicate
 _f_: forward-word        _c_: end-of-buffer         _l_: copy-region       _o_ org table
 _b_: backward-word       _t_: forward-sexp          _u_: undo              _h_ eval
-_x_: expand-region       _w_: backward-sexp         _p_: query-replace     _n_ fill
+_d_: expand-region       _w_: backward-sexp         _p_: query-replace     _n_ fill
 _s_: search              _'_: duplicate             _j_: extended-command  _._ deactivate
 "
   ("a" crux-move-beginning-of-line)
   ("e" move-end-of-line)
   ("f" forward-word)
   ("b" backward-word)
-  ("x" er/expand-region)
-  ("s" swiper-isearch)
+  ("d" er/expand-region)
+  ("s" isearch-forward)
 
   ("A" crux-move-beginning-of-line :exit t)
   ("E" move-end-of-line :exit t)
   ("F" forward-word :exit t)
   ("B" backward-word :exit t)
-  ("X" er/expand-region :exit t)
+  ("D" er/expand-region :exit t)
   ("S" swiper-isearch)
 
   ("g" goto-line)
@@ -40,7 +40,7 @@ _s_: search              _'_: duplicate             _j_: extended-command  _._ d
   ("v" scroll-up-command)
   ("R" scroll-down-command :exit t)
   ("V" scroll-up-command :exit t)
-  ;; d
+  ;; x
 
 
   ("<SPC>" set-mark-command)
