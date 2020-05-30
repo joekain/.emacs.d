@@ -115,7 +115,8 @@
 	      (when (version<= "26.0.50" emacs-version )
 		(display-line-numbers-mode -1))
 	      (setq org-log-done 'time)))
-  (setq org-startup-folded t)
+  (setq org-startup-folded t
+	org-special-ctrl-a/e t)
   )
 
 (use-package org-ql
