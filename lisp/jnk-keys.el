@@ -7,6 +7,7 @@ _f_: forward-word        _c_: end-of-buffer         _l_: copy-region       _o_ o
 _b_: backward-word       _t_: forward-sexp          _u_: undo              _h_ eval
 _d_: expand-region       _w_: backward-sexp         _p_: query-replace     _n_ fill
 _s_: search              _'_: duplicate             _j_: extended-command  _._ deactivate
+^ ^                      ^ ^                        _i_: exchange
 "
   ("a" crux-move-beginning-of-line)
   ("e" move-end-of-line)
@@ -49,12 +50,14 @@ _s_: search              _'_: duplicate             _j_: extended-command  _._ d
   ("u" undo)
   ("p" query-replace)
   ("j" execute-extended-command)
+  ("i" exchange-point-and-mark)
 
   ("K" kill-region :exit t)
   ("L" copy-region-as-kill :exit t)
   ("U" undo :exit t)
   ("P" query-replace :exit t)
   ("J" execute-extended-command :exit t)
+  ("I" exchange-point-and-mark :exit t)
 
   (";" comment-dwim)
   ("," crux-duplicate-and-comment-current-line-or-region)
@@ -73,6 +76,12 @@ _s_: search              _'_: duplicate             _j_: extended-command  _._ d
 
   ("q" nil)
   ("Q" jnk-keys-return :exit t)
+
+  ;; y
+  ;; b
+  ;; m
+  ;; /
+
   )
 
 (defvar jnk-keys-marker)
