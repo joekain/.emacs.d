@@ -226,7 +226,9 @@
    company-tooltip-flip-when-above t
    company-tooltip-align-annotations t)
   (company-tng-configure-default)
-  (global-company-mode 1))
+  (global-company-mode 1)
+  (define-key company-active-map (kbd "<up>") nil)
+  (define-key company-active-map (kbd "<down>") nil))
 
 (use-package company-prescient
   :straight t
