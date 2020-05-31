@@ -7,7 +7,7 @@ _f_: forward-word        _c_: end-of-buffer         _l_: copy-region       _o_ o
 _b_: backward-word       _t_: forward-sexp          _u_: undo              _h_ eval
 _d_: expand-region       _w_: backward-sexp         _p_: query-replace     _n_ fill
 _s_: search              _'_: duplicate             _j_: extended-command  _._ deactivate
-^ ^                      ^ ^                        _i_: exchange
+_x_: exchange
 "
   ("a" crux-move-beginning-of-line)
   ("e" move-end-of-line)
@@ -29,6 +29,7 @@ _s_: search              _'_: duplicate             _j_: extended-command  _._ d
   ("c" end-of-buffer)
   ("w" backward-sexp)
   ("t" forward-sexp)
+  ("x" exchange-point-and-mark)
 
   ("G" goto-line :exit t)
   ("V" avy-goto-char-timer :exit t)
@@ -36,13 +37,12 @@ _s_: search              _'_: duplicate             _j_: extended-command  _._ d
   ("C" end-of-buffer :exit t)
   ("W" backward-sexp :exit t)
   ("T" forward-sexp :exit t)
+  ("X" exchange-point-and-mark :exit t)
 
   ("r" scroll-down-command)
   ("v" scroll-up-command)
   ("R" scroll-down-command :exit t)
   ("V" scroll-up-command :exit t)
-  ;; x
-
 
   ("<SPC>" set-mark-command)
   ("k" kill-region)
@@ -50,14 +50,12 @@ _s_: search              _'_: duplicate             _j_: extended-command  _._ d
   ("u" undo)
   ("p" query-replace)
   ("j" execute-extended-command)
-  ("i" exchange-point-and-mark)
 
   ("K" kill-region :exit t)
   ("L" copy-region-as-kill :exit t)
   ("U" undo :exit t)
   ("P" query-replace :exit t)
   ("J" execute-extended-command :exit t)
-  ("I" exchange-point-and-mark :exit t)
 
   (";" comment-dwim)
   ("," crux-duplicate-and-comment-current-line-or-region)
@@ -78,10 +76,10 @@ _s_: search              _'_: duplicate             _j_: extended-command  _._ d
   ("Q" jnk-keys-return :exit t)
 
   ;; y
+  ;; i
   ;; b
   ;; m
   ;; /
-
   )
 
 (defvar jnk-keys-marker)
