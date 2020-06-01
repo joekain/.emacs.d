@@ -1,22 +1,3 @@
-;; Swap alt and command keys on mac.
-(when (eq system-type 'darwin)
-  (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier 'super)
-  )
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Terminal stuff
-(unless (display-graphic-p)
-  (require 'mwheel)
-  (require 'mouse)
-  (xterm-mouse-mode t)
-  (mouse-wheel-mode t)
-  (global-set-key [mouse-4] 'scroll-down-line)
-  (global-set-key [mouse-5] 'scroll-up-line)
-  )
-
-(load-theme 'jnk-monokai-white t)
-
 ;; Bootstrap straight package manager
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -33,6 +14,30 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'use-package)
+
+;; Core Emacs configuration
+(use-package emacs
+  :straight t
+  :config
+  ;; Swap alt and command keys on mac.
+  (when (eq system-type 'darwin)
+    (setq mac-command-modifier 'meta)
+    (setq mac-option-modifier 'super))
+
+  ;; Terminal stuff
+  (unless (display-graphic-p)
+    (require 'mwheel)
+    (require 'mouse)
+    (xterm-mouse-mode t)
+    (mouse-wheel-mode t)
+    (global-set-key [mouse-4] 'scroll-down-line)
+    (global-set-key [mouse-5] 'scroll-up-line))
+
+  (load-theme 'jnk-monokai-white t)
+
+  (tool-bar-mode -1)
+  )
+
 
 ;; Enable and configure packages
 
@@ -150,8 +155,6 @@
 
 (use-package avy
   :straight t)
-
-(tool-bar-mode -1)
 
 (setq-default show-trailing-whitespace t)
 
