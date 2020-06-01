@@ -34,8 +34,8 @@
     (global-set-key [mouse-5] 'scroll-up-line))
 
   (load-theme 'jnk-monokai-white t)
-
   (tool-bar-mode -1)
+  (column-number-mode +1)
   )
 
 
