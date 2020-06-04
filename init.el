@@ -36,6 +36,10 @@
   (load-theme 'jnk-monokai-white t)
   (tool-bar-mode -1)
   (column-number-mode +1)
+
+  (setq
+   make-backup-files nil
+   auto-save-default nil)
   )
 
 
