@@ -64,6 +64,7 @@ _x_: exchange
   ("n" fill-region)
   ("." keyboard-quit)  ;; deactivates the mark
   ("'" crux-duplicate-current-line-or-region)
+  ("y" jnk-keys-return-and-yank)
 
   (":" comment-dwim :exit t)
   ("<" crux-duplicate-and-comment-current-line-or-region :exit t)
@@ -71,6 +72,7 @@ _x_: exchange
   ("H" eval-region :exit t)
   ("N" fill-region :exit t)
   ("\"" crux-duplicate-current-line-or-region :exit t)
+  ("Y" jnk-keys-return-and-yank :exit t)
 
   ("q" nil)
   ("Q" jnk-keys-return :exit t)
@@ -98,6 +100,14 @@ _x_: exchange
   (interactive)
   (let ((buf  (marker-buffer jnk-keys-marker)))
     (switch-to-buffer buf)(goto-char jnk-keys-marker)))
+
+(defun jnk-keys-return-and-yank ()
+  (interactive)
+  (if (use-region-p)
+      (progn
+	(copy-region-as-kill (region-beginning) (region-end))
+	(jnk-keys-return)
+	(yank))))
 
 
 (defhydra jnk-keys-file-buffer (:color teal :hint nil :timeout 2)
