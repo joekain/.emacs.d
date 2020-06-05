@@ -1,48 +1,50 @@
-(defhydra jnk-keys-move-region (:color pink :hint nil :timeout 2)
+(defhydra jnk-keys-move-region (:color pink :hint nil)
   "
 Movement                                        Region
-_a_: beginning-of-line   _g_: goto-line             ^ ^: set-mark          _;_ comment
-_e_: end-of-line         _z_: beginning-of-buffer   _k_: kill-region       _,_ comment/duplicate
-_f_: forward-word        _c_: end-of-buffer         _l_: copy-region       _o_ org table
-_b_: backward-word       _t_: forward-sexp          _u_: undo              _h_ eval
-_d_: expand-region       _w_: backward-sexp         _p_: query-replace     _n_ fill
-_s_: search              _'_: duplicate             _j_: extended-command  _._ deactivate
-_x_: exchange
+_w_: beginning-of-line   _g_: goto-line             ^ ^: set-mark          _;_ comment
+_e_: end-of-line         _1_: beginning-of-buffer   _k_: kill-region       _,_ comment/duplicate
+_f_: forward-word        _2_: end-of-buffer         _l_: copy-region       _o_ org table
+_a_: backward-word       _v_: forward-sexp          _u_: undo              _h_ eval
+_d_: expand-region       _c_: backward-sexp         _p_: query-replace     _n_ fill
+_s_: search              _r_: search backward       _j_: extended-command  _._ deactivate
+_x_: exchange            ^ ^                        _i_: duplicate         _y_ yank
 "
-  ("a" crux-move-beginning-of-line)
+  ("w" crux-move-beginning-of-line)
   ("e" move-end-of-line)
   ("f" forward-word)
-  ("b" backward-word)
+  ("a" backward-word)
   ("d" er/expand-region)
   ("s" isearch-forward)
-
-  ("A" crux-move-beginning-of-line :exit t)
-  ("E" move-end-of-line :exit t)
-  ("F" forward-word :exit t)
-  ("B" backward-word :exit t)
-  ("D" er/expand-region :exit t)
-  ("S" swiper-isearch)
-
-  ("g" goto-line)
-  ("v" avy-goto-char-timer)
-  ("z" beginning-of-buffer)
-  ("c" end-of-buffer)
-  ("w" backward-sexp)
-  ("t" forward-sexp)
   ("x" exchange-point-and-mark)
 
-  ("G" goto-line :exit t)
-  ("V" avy-goto-char-timer :exit t)
-  ("Z" beginning-of-buffer :exit t)
-  ("C" end-of-buffer :exit t)
-  ("W" backward-sexp :exit t)
-  ("T" forward-sexp :exit t)
+  ("W" crux-move-beginning-of-line :exit t)
+  ("E" move-end-of-line :exit t)
+  ("F" forward-word :exit t)
+  ("A" backward-word :exit t)
+  ("D" er/expand-region :exit t)
   ("X" exchange-point-and-mark :exit t)
 
-  ("r" scroll-down-command)
-  ("v" scroll-up-command)
-  ("R" scroll-down-command :exit t)
-  ("V" scroll-up-command :exit t)
+  ("g" goto-line)
+  ("1" beginning-of-buffer)
+  ("2" end-of-buffer)
+  ("c" backward-sexp)
+  ("v" forward-sexp)
+  ("r" isearch-backward :exit t)
+
+  ("G" goto-line :exit t)
+  ("1" beginning-of-buffer :exit t)
+  ("2" end-of-buffer :exit t)
+  ("C" backward-sexp :exit t)
+  ("V" forward-sexp :exit t)
+
+  ("3" scroll-down-command)
+  ("4" scroll-up-command)
+  ("#" scroll-down-command :exit t)
+  ("$" scroll-up-command :exit t)
+
+  ;; t
+  ;; b
+  ;; z
 
   ("<SPC>" set-mark-command)
   ("k" kill-region)
@@ -50,12 +52,14 @@ _x_: exchange
   ("u" undo)
   ("p" query-replace)
   ("j" execute-extended-command)
+  ("i" crux-duplicate-current-line-or-region)
 
   ("K" kill-region :exit t)
   ("L" copy-region-as-kill :exit t)
   ("U" undo :exit t)
   ("P" query-replace :exit t)
   ("J" execute-extended-command :exit t)
+  ("I" crux-duplicate-current-line-or-region :exit t)
 
   (";" comment-dwim)
   ("," crux-duplicate-and-comment-current-line-or-region)
@@ -63,7 +67,6 @@ _x_: exchange
   ("h" eval-region)
   ("n" fill-region)
   ("." keyboard-quit)  ;; deactivates the mark
-  ("'" crux-duplicate-current-line-or-region)
   ("y" jnk-keys-return-and-yank)
 
   (":" comment-dwim :exit t)
@@ -71,14 +74,11 @@ _x_: exchange
   ("O" org-table-create-or-convert-from-region :exit t)
   ("H" eval-region :exit t)
   ("N" fill-region :exit t)
-  ("\"" crux-duplicate-current-line-or-region :exit t)
   ("Y" jnk-keys-return-and-yank :exit t)
 
   ("q" nil)
   ("Q" jnk-keys-return :exit t)
 
-  ;; y
-  ;; i
   ;; b
   ;; m
   ;; /
@@ -110,7 +110,7 @@ _x_: exchange
 	(yank))))
 
 
-(defhydra jnk-keys-file-buffer (:color teal :hint nil :timeout 2)
+(defhydra jnk-keys-file-buffer (:color teal :hint nil)
   "
 _f_: find-file     _s_: save-buffer  _o_: ff-get-other-file  _b_: switch-buffer
 _r_: recent file   _k_: kill-buffer  ^ ^                     _l_: list-buffers
@@ -128,7 +128,7 @@ _r_: recent file   _k_: kill-buffer  ^ ^                     _l_: list-buffers
   )
 
 
-(defhydra jnk-keys-windows-frames (:color teal :hint nil :timeout 2)
+(defhydra jnk-keys-windows-frames (:color teal :hint nil)
   "
 _2_: split window  _1_: delete-other-windows  _f_: new-frame
 ^ ^                _0_: delete-window         _d_: delete-frame
@@ -140,7 +140,7 @@ _2_: split window  _1_: delete-other-windows  _f_: new-frame
   ("d" delete-frame))
 
 
-(defhydra jnk-keys-org (:color pink :hint nil :timeout 2)
+(defhydra jnk-keys-org (:color pink :hint nil)
   "
 Heading: sfed   Subtree: jlik   _a_: archive  _u_: fold up     _r_: return
 _n_: insert       _m_: ins-close    _c_: closeup  _v_: close-edit  _t_: todo
@@ -239,22 +239,22 @@ _n_: insert       _m_: ins-close    _c_: closeup  _v_: close-edit  _t_: todo
   (forward-char 1)
   )
 
-(defhydra jnk-keys-quick-access (:color blue :hint nil :timeout 2)
+(defhydra jnk-keys-quick-access (:color blue :hint nil)
   "
-_s_: save  _u_: undo  _;_: comment    _p_: query  _S_: Set Chart  _k_ kill line
-_f_: fill  _r_: redo  _/_: complete   _d_: rg     _m_: bookmark   _n_ spell
-_c_: cap   _v_ tree   _b_: buffer     _x_: xref   _g_: goto mark  _a_ rg cwd
-_o_: open  _W_: Win   _R_: Region     _F_: Files / Buffers
+_s_: save  _u_: undo    _;_: comment    _p_: query  _S_: Set Chart  _k_ kill line
+_f_: fill  _r_: redo    _/_: complete   _d_: rg     _m_: bookmark   _n_ spell
+_c_: cap   _j_: recent  _b_: buffer     _x_: xref   _g_: goto mark  _a_ rg cwd
+_o_: open  ^ ^          ^ ^             _R_: Region _F_: Files / Buffers
 "
   ("s" save-buffer)
   ("f" fill-paragraph)
   ("c" org-capture)
   ("o" counsel-open-from-filelist)
+  ("j" crux-recentf-find-file)
   ("u" undo-fu-only-undo :color pink)
   ("r" undo-fu-only-redo :color pink)
   ("U" undo-fu-only-undo)
   ("R" undo-fu-only-redo)
-  ("v" undo-tree-visualize)
   (";" comment-dwim)
   ("/" dabbrev-expand :color pink)
   ("?" dabbrev-expand)
