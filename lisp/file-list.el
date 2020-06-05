@@ -38,4 +38,18 @@ counsel-open-from-filelist will select from this list."
   (interactive)
   (counsel-file-list--1 counsel-open-from-filelist-filelist))
 
+
+;; This is a more flexible example.  Instead of setting the variable
+;; to a filename set it to a function that returns a file.  This can
+;; change the file based on whatever conditions.
+(defvar counsel-open-from-func-func (lambda () "/tmp/filelist")
+  "Set this variable to point to a function that returns the name of a
+file listing a set of files.  counsel-open-from-filelist will select
+from this list.")
+
+(defun counsel-open-from-func (&optional initial-input)
+  (interactive)
+  (if counsel-open-from-func-func
+      (counsel-file-list--1 (funcall counsel-open-from-func-func))))
+
 (provide 'file-list)
