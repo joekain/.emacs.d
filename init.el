@@ -272,6 +272,9 @@
   :config
   (add-to-list 'company-backends 'company-anaconda))
 
+(use-package magit-find-file
+  :straight t)
+
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda)

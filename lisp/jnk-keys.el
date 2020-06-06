@@ -267,7 +267,7 @@ _o_: open  ^ ^          ^ ^             _R_: Region _F_: Files / Buffers
   ("s" save-buffer)
   ("f" fill-paragraph)
   ("c" org-capture)
-  ("o" counsel-open-from-filelist)
+  ("o" magit-find-file-completing-read)
   ("j" crux-recentf-find-file)
   ("u" undo-fu-only-undo :color pink)
   ("r" undo-fu-only-redo :color pink)
