@@ -316,7 +316,7 @@ _i_: prev  _k_: next error  _c_: compile  _g_: recompile _f_: kill
 (defvar jnk-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "M-d") 'jnk-keys-move-region-wrapper)
-    (define-key map (kbd "M-n") 'jnk-keys-quick-access/body)
+    (define-key map (kbd "M-j") 'jnk-keys-quick-access/body)
     (define-key map (kbd "M-c") 'jnk-keys-compile/body)
     map)
   "jnk-keys-minor-mode keymap.")
