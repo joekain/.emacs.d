@@ -313,6 +313,19 @@ _i_: prev  _k_: next error  _c_: compile  _g_: recompile _f_: kill
   ("q" nil)
   )
 
+
+(defhydra jnk-keys-dumb-jump (:color blue :hint nil)
+  "
+_g_: go   _b_: back  _l_: look  _x_: go external  _p_: go prompt
+"
+  ("g" dumb-jump-go)
+  ("b" dumb-jump-back)
+  ("l" dumb-jump-quick-look)
+  ("x" dumb-jump-go-prefer-external)
+  ("p" dumb-jump-go-prompt)
+  ("q" nil)
+  )
+
 (defvar jnk-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "M-d") 'jnk-keys-move-region-wrapper)
