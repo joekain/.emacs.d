@@ -275,6 +275,12 @@
 (use-package magit-find-file
   :straight t)
 
+(use-package history
+  :straight t
+  :bind (:map history-map
+	      ("j" . #'history-preview-prev-history)
+	      ("l" . #'history-preview-next-history)))
+
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda)

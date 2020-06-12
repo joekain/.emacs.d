@@ -326,11 +326,22 @@ _g_: go   _b_: back  _l_: look  _x_: go external  _p_: go prompt
   ("q" nil)
   )
 
+(defhydra jnk-keys-history (:color blue :hint nil)
+  "
+^ ^: goto _j_: add _k_: kill
+"
+  ("<SPC>" history-goto-history)
+  ("j" history-add-history)
+  ("k" history-kill-histories)
+  ("q" nil)
+  )
+
 (defvar jnk-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "M-d") 'jnk-keys-move-region-wrapper)
     (define-key map (kbd "M-j") 'jnk-keys-quick-access/body)
     (define-key map (kbd "M-c") 'jnk-keys-compile/body)
+    (define-key map (kbd "M-SPC") 'jnk-keys-history/body)
     map)
   "jnk-keys-minor-mode keymap.")
 
