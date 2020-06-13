@@ -326,15 +326,27 @@ _g_: go   _b_: back  _l_: look  _x_: go external  _p_: go prompt
   ("q" nil)
   )
 
-(defhydra jnk-keys-history (:color blue :hint nil)
+(defhydra jnk-keys-history (:color amaranth :hint nil)
   "
-^ ^: goto _j_: add _k_: kill
+History:
+^ ^: cycle  _i_: insert  _k_: kill  _q_/_<return>_: quit
 "
-  ("<SPC>" history-goto-history)
-  ("j" history-add-history)
-  ("k" history-kill-histories)
+  ("<SPC>" jnk-keys-cycle-history)
+  ("i" history-add-history :exit t)
+  ("k" history-kill-histories :exit t)
   ("q" nil)
-  )
+  ("<return>" nil))
+
+(defun jnk-keys-cycle-history ()
+  (interactive)
+  (history-do
+    (when history-stack
+      (setq history-index (+ history-index -1))
+      (cond
+       ((< history-index 0)
+	(setq history-index (1- (length history-stack)))))
+      (history-use-current-history)
+      (message (history-histories-string)))))
 
 (defvar jnk-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
