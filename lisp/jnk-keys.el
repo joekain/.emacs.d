@@ -329,11 +329,12 @@ _g_: go   _b_: back  _l_: look  _x_: go external  _p_: go prompt
 (defhydra jnk-keys-history (:color amaranth :hint nil)
   "
 History:
-^ ^: cycle  _i_: insert  _k_: kill  _q_/_<return>_: quit
+^ ^: cycle  _i_: insert  _k_: kill  _<ESC>_: cancel  _q_/_<return>_: accept history
 "
   ("<SPC>" jnk-keys-cycle-history)
   ("i" history-add-history :exit t)
   ("k" history-kill-histories :exit t)
+  ("<ESC>" jnk-keys-return :exit t)
   ("q" nil)
   ("<return>" nil))
 
@@ -348,12 +349,23 @@ History:
       (history-use-current-history)
       (message (history-histories-string)))))
 
+(defun jnk-keys-history-wrapper ()
+  "A wrapper around the jnk-keys-history hydra that saves the
+   initial location.  The location can be restored by the hydra
+   if desired."
+  (interactive)
+
+  (setq jnk-keys-marker (point-marker))
+  (jnk-keys-history/body)
+  )
+
+
 (defvar jnk-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "M-d") 'jnk-keys-move-region-wrapper)
     (define-key map (kbd "M-j") 'jnk-keys-quick-access/body)
     (define-key map (kbd "M-c") 'jnk-keys-compile/body)
-    (define-key map (kbd "M-SPC") 'jnk-keys-history/body)
+    (define-key map (kbd "M-SPC") 'jnk-keys-history-wrapper)
     map)
   "jnk-keys-minor-mode keymap.")
 
