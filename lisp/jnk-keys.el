@@ -326,10 +326,37 @@ _g_: go   _b_: back  _l_: look  _x_: go external  _p_: go prompt
   ("q" nil)
   )
 
+(defhydra jnk-keys-bookmarks (:color amaranth :hint nil)
+  "
+Bookmarks:
+^ ^: cycle  _i_: insert  _s_: scope   _t_: task
+_q_/_<return>_: accept   _<ESC>_: cancel
+"
+  ("<SPC>" bmkp-cycle)
+  ("i" bmkp-bookmark-set-confirms-overwrite :exit t)
+  ("t" jnk-bookmarks-task-new-bookmark :exit t)
+  ("s" jnk-bookmarks-scope-new-bookmark :exit t)
+  ("<ESC>" jnk-keys-return :exit t)
+  ("q" nil)
+  ("<return>" nil))
+
+(defun jnk-keys-bookmarks-wrapper ()
+  "A wrapper around the jnk-keys-bookmarks hydra that saves the
+   initial location.  The location can be restored by the hydra
+   if desired."
+  (interactive)
+
+  (setq jnk-keys-marker (point-marker))
+  ;; Regenerate the list so we can just start cycling
+  (jnk-bookmarks-scope-bookmark-list)
+  (jnk-keys-bookmarks/body))
+
+
+
 (defhydra jnk-keys-history (:color amaranth :hint nil)
   "
 History:
-^ ^: cycle  _i_: insert  _k_: kill  _<ESC>_: cancel  _q_/_<return>_: accept history
+^ ^: cycle  _i_: insert  _k_: kill_<ESC>_: cancel  _q_/_<return>_: accept history
 "
   ("<SPC>" jnk-keys-cycle-history)
   ("i" history-add-history :exit t)
@@ -365,7 +392,7 @@ History:
     (define-key map (kbd "M-d") 'jnk-keys-move-region-wrapper)
     (define-key map (kbd "M-j") 'jnk-keys-quick-access/body)
     (define-key map (kbd "M-c") 'jnk-keys-compile/body)
-    (define-key map (kbd "M-SPC") 'jnk-keys-history-wrapper)
+    (define-key map (kbd "M-SPC") 'jnk-keys-bookmarks-wrapper)
     map)
   "jnk-keys-minor-mode keymap.")
 

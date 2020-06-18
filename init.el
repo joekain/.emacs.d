@@ -281,6 +281,9 @@
 	      ("j" . #'history-preview-prev-history)
 	      ("l" . #'history-preview-next-history)))
 
+
+(use-package bookmark+ :straight t)
+
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda)
@@ -295,6 +298,8 @@
 
 (use-package kill-current-buffer
   :config (global-set-key (kbd "C-x k") 'kill-current-buffer))
+
+(use-package jnk-bookmarks)
 
 (use-package jnk-keys
   :config (jnk-keys-minor-mode 1)
