@@ -39,8 +39,20 @@
 (defun jnk-bookmarks-scope-bookmark-list ()
   (interactive)
   (with-current-buffer "*Bookmark List*"
-    (let ((bmkp-bmenu-filter-patern (project-task-scope-tag)))
+    (let ((bmkp-bmenu-filter-pattern (project-task-scope-tag)))
       (bmkp-bmenu-filter-alist-by-tags-regexp)
       (bmkp-choose-navlist-from-bookmark-list "CURRENT *Bookmark List*"))))
+
+(defun jnk-bookmarks-task-project (project)
+  (interactive "MProject: ")
+  (setq jnk-bookmarks-task project))
+
+(defun jnk-bookmarks-task-set (task)
+  (interactive "MTask: ")
+  (setq jnk-bookmarks-task task))
+
+(defun jnk-bookmarks-scope-set (scope)
+  (interactive "MScope: ")
+  (setq jnk-bookmarks-scope scope))
 
 (provide 'jnk-bookmarks)
