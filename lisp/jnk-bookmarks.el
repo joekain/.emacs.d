@@ -35,24 +35,38 @@
 					jnk-bookmarks-task)))
   )
 
+(defun jnk-bookmarks-project-new-bookmark ()
+  (interactive)
+  (bookmark-set)
+  (setq bookmark (car bookmark-alist))
+  (bmkp-add-tags bookmark (list jnk-bookmarks-project)))
+
 
 (defun jnk-bookmarks-scope-bookmark-list ()
   (interactive)
-  (with-current-buffer "*Bookmark List*"
-    (let ((bmkp-bmenu-filter-pattern (project-task-scope-tag)))
-      (bmkp-bmenu-filter-alist-by-tags-regexp)
-      (bmkp-choose-navlist-from-bookmark-list "CURRENT *Bookmark List*"))))
+  (let (bookmark-list-buffer (get-buffer "*Bookmark List*"))
+       (if (not bookmark-list-buffer)
+	   (progn
+	     (bookmark-bmenu-list)
+	     (setq bookmark-list-buffer (get-buffer "*Bookmark List*"))))
+       (with-current-buffer bookmark-list-buffer
+	   (let ((bmkp-bmenu-filter-pattern (project-task-scope-tag)))
+	     (bmkp-bmenu-filter-alist-by-tags-regexp)
+	     (bmkp-choose-navlist-from-bookmark-list "CURRENT *Bookmark List*")))))
 
-(defun jnk-bookmarks-task-project (project)
+(defun jnk-bookmarks-project-set (project)
   (interactive "MProject: ")
-  (setq jnk-bookmarks-task project))
+  (setq jnk-bookmarks-project project)
+  (jnk-bookmarks-scope-bookmark-list))
 
 (defun jnk-bookmarks-task-set (task)
   (interactive "MTask: ")
-  (setq jnk-bookmarks-task task))
+  (setq jnk-bookmarks-task task)
+  (jnk-bookmarks-scope-bookmark-list))
 
 (defun jnk-bookmarks-scope-set (scope)
   (interactive "MScope: ")
-  (setq jnk-bookmarks-scope scope))
+  (setq jnk-bookmarks-scope scope)
+  (jnk-bookmarks-scope-bookmark-list))
 
 (provide 'jnk-bookmarks)

@@ -328,14 +328,17 @@ _g_: go   _b_: back  _l_: look  _x_: go external  _p_: go prompt
 
 (defhydra jnk-keys-bookmarks (:color amaranth :hint nil)
   "
-Bookmarks:
-^ ^: cycle  _i_: insert  _s_: scope   _t_: task
-_q_/_<return>_: accept   _<ESC>_: cancel
+Insert: _p_: project  _t_: task  _s_: scope   _i_: no tag  ║  _q_/_<return>_: accept
+Filter: _P_: project  _T_: task  _S_: scope   ^ ^: cycle   ║  _<ESC>_: cancel
 "
   ("<SPC>" bmkp-cycle)
   ("i" bmkp-bookmark-set-confirms-overwrite :exit t)
+  ("p" jnk-bookmarks-project-new-bookmark :exit t)
   ("t" jnk-bookmarks-task-new-bookmark :exit t)
   ("s" jnk-bookmarks-scope-new-bookmark :exit t)
+  ("P" jnk-bookmarks-project-set)
+  ("T" jnk-bookmarks-task-set)
+  ("S" jnk-bookmarks-scope-set)
   ("<ESC>" jnk-keys-return :exit t)
   ("q" nil)
   ("<return>" nil))
