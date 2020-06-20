@@ -259,9 +259,9 @@ _n_: insert       _m_: ins-close    _c_: closeup  _v_: close-edit  _t_: todo
 
 (defhydra jnk-keys-quick-access (:color blue :hint nil)
   "
-_s_: save  _u_: undo    _;_: comment    _p_: query  _S_: Set Chart  _k_ kill line
-_f_: fill  _r_: redo    _/_: complete   _d_: rg     _m_: bookmark   _n_ spell
-_c_: cap   _j_: recent  _b_: buffer     _x_: xref   _g_: goto mark  _a_ rg cwd
+_s_: save  _u_: undo    _;_: comment    _p_: query  _k_ kill line
+_f_: fill  _r_: redo    _/_: complete   _d_: rg     _n_ spell
+_c_: cap   _j_: recent  _b_: buffer     _x_: xref   _a_ rg cwd
 _o_: open  ^ ^          ^ ^             _R_: Region _F_: Files / Buffers
 "
   ("s" save-buffer)
@@ -280,9 +280,6 @@ _o_: open  ^ ^          ^ ^             _R_: Region _F_: Files / Buffers
   ("p" query-replace)
   ("d" deadgrep)
   ("x" xref-find-definitions)
-  ("S" nav-bm-set-file)
-  ("m" nav-bm-capture)
-  ("g" counsel-nav-bm)
   ("W" jnk-keys-windows-frames/body)
   ("R" jnk-keys-move-region-wrapper)
   ("F" jnk-keys-file-buffer/body)
