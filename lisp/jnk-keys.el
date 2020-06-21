@@ -386,6 +386,30 @@ History:
   (jnk-keys-history/body)
   )
 
+(defhydra jnk-keys-deadgrep (:color pink :hint nil)
+  "
+_i_: prev  _k_: next match _d_: deadgrep  _g_: restart _f_: kill
+"
+  ("i" jnk-keys-deadgrep-prev)
+  ("k" jnk-keys-deadgrep-next)
+  ("d" deadgrep)
+  ("g" deadgrep-restart)
+  ("f" deadgrep-kill-process :color blue)
+  ("q" nil))
+
+(defun jnk-keys-deadgrep-next ()
+  (interactive)
+  (let ((last-results-buf (car-safe (deadgrep--buffers))))
+    (with-current-buffer last-results-buf
+      (deadgrep-forward-match)
+      (deadgrep-visit-result))))
+
+(defun jnk-keys-deadgrep-prev ()
+  (interactive)
+  (let ((last-results-buf (car-safe (deadgrep--buffers))))
+    (with-current-buffer last-results-buf
+      (deadgrep-backward-match)
+      (deadgrep-visit-result))))
 
 (defvar jnk-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
