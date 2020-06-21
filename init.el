@@ -249,10 +249,10 @@
 (use-package savehist
   :config (savehist-mode 1))
 
-;; (use-package literate-calc-mode
-;;   :straight t
-;;   :config
-;;     (add-hook 'org-mode-hook #'literate-calc-minor-mode))
+(use-package literate-calc-mode
+   :straight t
+   :config
+     (add-hook 'org-mode-hook #'literate-calc-minor-mode))
 
 (use-package undo-fu
   :straight t
