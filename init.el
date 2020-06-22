@@ -92,19 +92,6 @@
 	selectrum-highlight-candidates-function #'orderless-highlight-matches)
   :custom (completion-styles '(orderless)))
 
-(use-package recentf
-  :straight t
-  :config
-    (setq recentf-max-saved-items 500
-	  recentf-max-menu-items 15
-	  recentf-exclude '("^/var/folders\\.*"
-			    "COMMIT_EDITMSG\\'"
-			    ".*-autoloads\\.el\\'"
-			    "[/\\]\\.elpa/"
-			    )
-	  )
-    (recentf-mode +1))
-
 (use-package ace-window
   :straight t
   :config
@@ -310,5 +297,21 @@
 ;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")
 (load "local")
+
+;; After local customization to allow for local configuration of
+;; recentf variables.
+(use-package recentf
+  :straight t
+  :config
+    (setq recentf-max-saved-items 500
+	  recentf-max-menu-items 15
+	  recentf-exclude '("^/var/folders\\.*"
+			    "COMMIT_EDITMSG\\'"
+			    ".*-autoloads\\.el\\'"
+			    "[/\\]\\.elpa/"
+			    )
+	  )
+    (recentf-mode +1))
+
 
 (setq custom-file "~/.emacs.d/custom.el")
