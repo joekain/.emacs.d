@@ -33,8 +33,8 @@ _x_: exchange            ^ ^                        _i_: duplicate         _y_ y
   ("r" jnk-keys-isearch-backward-wrapper)
 
   ("G" goto-line :exit t)
-  ("1" beginning-of-buffer :exit t)
-  ("2" end-of-buffer :exit t)
+  ("!" beginning-of-buffer :exit t)
+  ("@" end-of-buffer :exit t)
   ("C" backward-sexp :exit t)
   ("V" forward-sexp :exit t)
   ("R" isearch-backward :exit t)
