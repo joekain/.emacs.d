@@ -285,8 +285,7 @@ _o_: open  ^ ^          ^ ^             _R_: Region _F_: Files / Buffers
   ("F" jnk-keys-file-buffer/body)
   ("k" crux-kill-whole-line :color pink)
   ("K" crux-kill-whole-line)
-  ("n" flyspell-correct-wrapper :color pink)
-  ("N" flyspell-correct-wrapper)
+  ("n" jnk-keys-flyspell-correct-rapid)
   ("a" rg-cwd)
   ("q" nil :exit t)
   )
@@ -296,6 +295,11 @@ _o_: open  ^ ^          ^ ^             _R_: Region _F_: Files / Buffers
   (let ((deadgrep-project-root-function (lambda () default-directory)))
     (call-interactively 'deadgrep))
   )
+
+(defun jnk-keys-flyspell-correct-rapid ()
+  (interactive)
+  (let ((current-prefix-arg '(4)))  ; C-u to enable rapid-mode
+    (call-interactively 'flyspell-correct-wrapper)))
 
 
 (defhydra jnk-keys-compile (:color pink :hint nil)
