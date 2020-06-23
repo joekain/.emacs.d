@@ -268,8 +268,18 @@
 	      ("j" . #'history-preview-prev-history)
 	      ("l" . #'history-preview-next-history)))
 
-
 (use-package bookmark+ :straight t)
+
+(use-package deft
+  :straight t
+  :init
+    (setq deft-extensions '("org" "md" "txt")
+          deft-use-filename-as-title t))
+
+(use-package zetteldeft
+  :straight t
+  :after deft
+  :config (zetteldeft-set-classic-keybindings))
 
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
