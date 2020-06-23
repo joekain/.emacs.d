@@ -270,16 +270,14 @@
 
 (use-package bookmark+ :straight t)
 
-(use-package deft
+(use-package org-roam
   :straight t
-  :init
-    (setq deft-extensions '("org" "md" "txt")
-          deft-use-filename-as-title t))
-
-(use-package zetteldeft
-  :straight t
-  :after deft
-  :config (zetteldeft-set-classic-keybindings))
+  :config
+  (setq
+   org-roam-directory "~/Documents/notes/org-roam"
+   org-roam-index-file "~/Documents/notes/org-roam/index.org")
+  (org-roam-mode +1)
+  (org-roam-db-build-cache))
 
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
