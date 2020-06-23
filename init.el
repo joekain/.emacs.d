@@ -279,6 +279,15 @@
   (org-roam-mode +1)
   (org-roam-db-build-cache))
 
+(use-package deft
+  :straight t
+  :after org
+  :custom
+  (deft-recursive t)
+  (deft-use-filter-string-for-filename t)
+  (deft-default-extension "org")
+  (deft-directory "/path/to/org-roam-files/"))
+
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda)
