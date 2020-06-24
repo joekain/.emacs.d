@@ -286,7 +286,7 @@
   (deft-recursive t)
   (deft-use-filter-string-for-filename t)
   (deft-default-extension "org")
-  (deft-directory "/path/to/org-roam-files/"))
+  (deft-directory org-roam-directory))
 
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
