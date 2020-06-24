@@ -279,6 +279,11 @@
   (org-roam-mode +1)
   (org-roam-db-build-cache))
 
+(use-package company-org-roam
+  :straight (:host github :repo "org-roam/company-org-roam")
+  :config
+  (push 'company-org-roam company-backends))
+
 (use-package deft
   :straight t
   :after org
