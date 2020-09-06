@@ -293,6 +293,8 @@
   (deft-default-extension "org")
   (deft-directory org-roam-directory))
 
+(use-package ripgrep :straight t)
+
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda)
