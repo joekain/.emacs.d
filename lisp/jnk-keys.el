@@ -173,10 +173,12 @@ _n_: insert       _m_: ins-close    _c_: closeup  _v_: close-edit  _t_: todo
   ("E" org-shiftmetaup :exit t)
   ("D" org-shiftmetadown :exit t)
 
+  ("h" org-insert-heading-respect-content :exit t)  ;; default to exit
   ("j" org-shiftmetaleft)
   ("l" org-shiftmetaright)
   ("i" org-metaup)
   ("k" org-metadown)
+  ("H" org-insert-heading-respect-content)
   ("J" org-shiftmetaleft :exit t)
   ("L" org-shiftmetaright :exit t)
   ("I" org-metaup :exit t)
