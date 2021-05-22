@@ -264,7 +264,7 @@ _n_: insert       _m_: ins-close    _c_: closeup  _v_: close-edit  _t_: todo
 _s_: save  _u_: undo    _;_: comment    _p_: query  _k_ kill line
 _f_: fill  _r_: redo    _/_: complete   _d_: rg     _n_ spell
 _c_: cap   _j_: recent  _b_: buffer     _x_: xref   _a_ rg cwd
-_o_: open  ^ ^          ^ ^             _R_: Region _F_: Files / Buffers
+_o_: open  _y_: yank    ^ ^             _R_: Region _F_: Files / Buffers
 "
   ("s" save-buffer)
   ("f" fill-paragraph)
@@ -275,6 +275,7 @@ _o_: open  ^ ^          ^ ^             _R_: Region _F_: Files / Buffers
   ("r" undo-fu-only-redo :color pink)
   ("U" undo-fu-only-undo)
   ("R" undo-fu-only-redo)
+  ("y" consult-yank)
   (";" comment-dwim)
   ("/" dabbrev-expand :color pink)
   ("?" dabbrev-expand)
