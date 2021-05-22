@@ -267,10 +267,10 @@ _c_: cap   _j_: recent  _b_: buffer     _x_: xref   _a_ rg cwd
 _o_: open  _y_: yank    ^ ^             _R_: Region _F_: Files / Buffers
 "
   ("s" save-buffer)
-  ("f" fill-paragraph)
+  ("f" unfill-toggle)
   ("c" org-capture)
   ("o" magit-find-file-completing-read)
-  ("j" crux-recentf-find-file)
+  ("j" consult-recent-file)
   ("u" undo-fu-only-undo :color pink)
   ("r" undo-fu-only-redo :color pink)
   ("U" undo-fu-only-undo)
@@ -279,7 +279,7 @@ _o_: open  _y_: yank    ^ ^             _R_: Region _F_: Files / Buffers
   (";" comment-dwim)
   ("/" dabbrev-expand :color pink)
   ("?" dabbrev-expand)
-  ("b" switch-to-buffer)
+  ("b" consult-buffer)
   ("p" query-replace)
   ("d" deadgrep)
   ("x" xref-find-definitions)
