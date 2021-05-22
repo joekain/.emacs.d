@@ -281,6 +281,12 @@
 
 (use-package ripgrep :straight t)
 
+(use-package shelldon
+  :straight (shelldon :type git
+                      :host github
+                      :repo "Overdr0ne/shelldon"
+                      :branch "master"))
+
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda)
@@ -297,8 +303,6 @@
   :config (jnk-keys-minor-mode 1)
   :bind (:map org-mode-map
 	      ("M-h" . #'jnk-keys-org-wrapper)))
-
-
 ;; Allow local customization in local/local.el
 (add-to-list 'load-path "~/.emacs.d/local")
 (load "local")
