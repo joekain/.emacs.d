@@ -57,24 +57,6 @@
   :config
   (prescient-persist-mode t))
 
-;; ivy/counsel - not primary selection
-;; Used for a few special functions and in some of my own functions.
-(use-package counsel
-  :straight t
-  :config
-    (setq ivy-use-virtual-buffers t
-	  enable-recursive-minibuffers t
-	  ivy-initial-inputs-alist nil)
-    (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
-    (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done))
-
-(use-package ivy-prescient
-  :straight t
-  :after counsel
-  :config
-    (prescient-persist-mode t)
-    (ivy-prescient-mode 1))
-
 ;; Selectrum used as primary selection
 (use-package selectrum
   :straight t
@@ -302,11 +284,6 @@
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda)
-
-(use-package file-list)
-
-(use-package nav-bm
-  :config (nav-bm-init))
 
 (use-package jnk-dashboard)
 (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
