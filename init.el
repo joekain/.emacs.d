@@ -287,6 +287,8 @@
                       :repo "Overdr0ne/shelldon"
                       :branch "master"))
 
+(use-package unfill :straight t)
+
 ;; Modules in lisp/ directory
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (use-package agenda)
