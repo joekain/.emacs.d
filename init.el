@@ -293,6 +293,10 @@
   (deft-default-extension "org")
   (deft-directory org-roam-directory))
 
+(use-package consult
+  :straight t
+  :bind ("C-x b" . consult-buffer))
+
 (use-package ripgrep :straight t)
 
 ;; Modules in lisp/ directory
