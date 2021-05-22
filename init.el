@@ -215,9 +215,6 @@
 ;;   :config
 ;;   (global-company-fuzzy-mode 1))
 
-(use-package savehist
-  :config (savehist-mode 1))
-
 (use-package literate-calc-mode
    :straight t
    :config
@@ -324,5 +321,9 @@
 	  )
     (recentf-mode +1))
 
+;; Similarly allow local configuration of savehist variables (like
+;; savehist-file)
+(use-package savehist
+  :config (savehist-mode 1))
 
 (setq custom-file "~/.emacs.d/custom.el")
