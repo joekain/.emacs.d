@@ -249,28 +249,13 @@
 
 (use-package bookmark+ :straight t)
 
-(use-package org-roam
-  :straight t
-  :config
-  (setq
-   org-roam-directory "~/Documents/notes/org-roam"
-   org-roam-index-file "~/Documents/notes/org-roam/index.org")
-  (org-roam-mode +1)
-  (org-roam-db-build-cache))
-
-(use-package company-org-roam
-  :straight (:host github :repo "org-roam/company-org-roam")
-  :config
-  (push 'company-org-roam company-backends))
-
 (use-package deft
   :straight t
   :after org
   :custom
   (deft-recursive t)
   (deft-use-filter-string-for-filename t)
-  (deft-default-extension "org")
-  (deft-directory org-roam-directory))
+  (deft-default-extension "org"))
 
 (use-package consult
   :straight t
