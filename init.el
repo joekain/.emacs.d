@@ -52,27 +52,25 @@
   :straight t
   :config (key-chord-mode -1))
 
-(use-package prescient
+;; Enable vertico
+(use-package vertico
   :straight t
-  :config
-  (prescient-persist-mode t))
+  :init
+  (vertico-mode)
 
-;; Selectrum used as primary selection
-(use-package selectrum
-  :straight t
-  :config
-  (selectrum-mode 1))
+  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
+  (setq vertico-cycle t)
+)
 
-(use-package selectrum-prescient
-  :straight t
-  :config (selectrum-prescient-mode 1))
-
+;; Use the `orderless' completion style.
+;; Enable `partial-completion' for files to allow path expansion.
+;; You may prefer to use `initials' instead of `partial-completion'.
 (use-package orderless
   :straight t
-  :config
-  (setq selectrum-refine-candidates-function #'orderless-filter
-	selectrum-highlight-candidates-function #'orderless-highlight-matches)
-  :custom (completion-styles '(orderless)))
+  :init
+  (setq completion-styles '(orderless)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles . (partial-completion))))))
 
 (use-package ace-window
   :straight t
