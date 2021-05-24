@@ -45,9 +45,6 @@
 
 ;; Enable and configure packages
 
-(use-package key-chord
-  :straight t)
-
 (use-package use-package-chords
   :straight t
   :config (key-chord-mode -1))
