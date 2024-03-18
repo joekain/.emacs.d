@@ -14,7 +14,7 @@ _x_: exchange            ^ ^                        _i_: duplicate         _y_ y
   ("f" forward-word)
   ("a" backward-word)
   ("d" er/expand-region)
-  ("s" jnk-keys-isearch-forward-wrapper)
+  ("s" consult-line)
   ("x" exchange-point-and-mark)
 
   ("W" crux-move-beginning-of-line :exit t)
@@ -22,7 +22,7 @@ _x_: exchange            ^ ^                        _i_: duplicate         _y_ y
   ("F" forward-word :exit t)
   ("A" backward-word :exit t)
   ("D" er/expand-region :exit t)
-  ("S" isearch-forward :exit t)
+  ("S" consult-line :exit t)
   ("X" exchange-point-and-mark :exit t)
 
   ("g" goto-line)
@@ -30,14 +30,12 @@ _x_: exchange            ^ ^                        _i_: duplicate         _y_ y
   ("2" end-of-buffer)
   ("c" backward-sexp)
   ("v" forward-sexp)
-  ("r" jnk-keys-isearch-backward-wrapper)
 
   ("G" goto-line :exit t)
   ("!" beginning-of-buffer :exit t)
   ("@" end-of-buffer :exit t)
   ("C" backward-sexp :exit t)
   ("V" forward-sexp :exit t)
-  ("R" isearch-backward :exit t)
 
   ("3" scroll-down-command)
   ("4" scroll-up-command)
