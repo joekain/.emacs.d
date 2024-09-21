@@ -69,13 +69,13 @@
         completion-category-defaults nil
         completion-category-overrides '((file (styles . (partial-completion))))))
 
-(use-package ace-window
-  :straight t
-  :config
-    (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-    (custom-set-faces
-     '(aw-leading-char-face
-       ((t (:inherit ace-jump-face-foreground :height 3.0))))))
+;; (use-package ace-window
+;;   :straight t
+;;   :config
+;;     (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+;;     (custom-set-faces
+;;      '(aw-leading-char-face
+;;        ((t (:inherit ace-jump-face-foreground :height 3.0))))))
 
 (when (version<= "26.0.50" emacs-version )
   (global-display-line-numbers-mode))
@@ -92,8 +92,8 @@
 	org-special-ctrl-a/e t)
   )
 
-(use-package org-ql
-  :straight t)
+;; (use-package org-ql
+;;   :straight t)
 
 (use-package yasnippet
   :straight t
@@ -307,3 +307,4 @@
   :config (savehist-mode 1))
 
 (setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)

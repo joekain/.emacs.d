@@ -6,7 +6,7 @@ _e_: end-of-line         _1_: beginning-of-buffer   _k_: kill-region       _,_ c
 _f_: forward-word        _2_: end-of-buffer         _l_: copy-region       _o_ org table
 _a_: backward-word       _v_: forward-sexp          _u_: undo              _h_ eval
 _d_: expand-region       _c_: backward-sexp         _p_: query-replace     _n_ fill
-_s_: search              _r_: search backward       _j_: extended-command  _._ deactivate
+_s_: search              ^ ^                        _j_: extended-command  _._ deactivate
 _x_: exchange            ^ ^                        _i_: duplicate         _y_ yank
 "
   ("w" crux-move-beginning-of-line)
@@ -14,7 +14,7 @@ _x_: exchange            ^ ^                        _i_: duplicate         _y_ y
   ("f" forward-word)
   ("a" backward-word)
   ("d" er/expand-region)
-  ("s" jnk-keys-isearch-forward-wrapper)
+  ("s" consult-line)
   ("x" exchange-point-and-mark)
 
   ("W" crux-move-beginning-of-line :exit t)
@@ -22,7 +22,7 @@ _x_: exchange            ^ ^                        _i_: duplicate         _y_ y
   ("F" forward-word :exit t)
   ("A" backward-word :exit t)
   ("D" er/expand-region :exit t)
-  ("S" isearch-forward :exit t)
+  ("S" consult-line :exit t)
   ("X" exchange-point-and-mark :exit t)
 
   ("g" goto-line)
@@ -30,20 +30,19 @@ _x_: exchange            ^ ^                        _i_: duplicate         _y_ y
   ("2" end-of-buffer)
   ("c" backward-sexp)
   ("v" forward-sexp)
-  ("r" jnk-keys-isearch-backward-wrapper)
 
   ("G" goto-line :exit t)
   ("!" beginning-of-buffer :exit t)
   ("@" end-of-buffer :exit t)
   ("C" backward-sexp :exit t)
   ("V" forward-sexp :exit t)
-  ("R" isearch-backward :exit t)
 
   ("3" scroll-down-command)
   ("4" scroll-up-command)
   ("#" scroll-down-command :exit t)
   ("$" scroll-up-command :exit t)
 
+  ;; r
   ;; t
   ;; b
   ;; z
@@ -139,7 +138,7 @@ _r_: recent file   _k_: kill-buffer  ^ ^                     _l_: list-buffers
   ("o" ff-get-other-file)
   ("r" crux-recentf-find-file)
   ("s" save-buffer)
-  ("b" switch-to-buffer)
+  ("b" consult-buffer)
   ("k" kill-current-buffer)
   ("l" ibuffer)
   ("q" nil)
@@ -261,10 +260,10 @@ _n_: insert       _m_: ins-close    _c_: closeup  _v_: close-edit  _t_: todo
 
 (defhydra jnk-keys-quick-access (:color blue :hint nil)
   "
-_s_: save  _u_: undo    _;_: comment    _p_: query  _k_ kill line
-_f_: fill  _r_: redo    _/_: complete   _d_: rg     _n_ spell
-_c_: cap   _j_: recent  _b_: buffer     _x_: xref   _a_ rg cwd
-_o_: open  _y_: yank    ^ ^             _R_: Region _F_: Files / Buffers
+_s_: save  _u_: undo    _;_: comment    _p_: query  _k_: kill line
+_f_: fill  _r_: redo    _/_: complete   _d_: rg     _n_: spell
+_c_: cap   _j_: recent  _b_: buffer     _x_: xref   _a_: rg cwd
+_o_: open  _y_: yank    ^ ^             _R_: Region _m_: crg
 "
   ("s" save-buffer)
   ("f" unfill-toggle)
@@ -275,7 +274,7 @@ _o_: open  _y_: yank    ^ ^             _R_: Region _F_: Files / Buffers
   ("r" undo-fu-only-redo :color pink)
   ("U" undo-fu-only-undo)
   ("R" undo-fu-only-redo)
-  ("y" consult-yank)
+  ("y" consult-yank-from-kill-ring)
   (";" comment-dwim)
   ("/" dabbrev-expand :color pink)
   ("?" dabbrev-expand)
@@ -290,6 +289,7 @@ _o_: open  _y_: yank    ^ ^             _R_: Region _F_: Files / Buffers
   ("K" crux-kill-whole-line)
   ("n" jnk-keys-flyspell-correct-rapid)
   ("a" rg-cwd)
+  ("m" consult-ripgrep)
   ("q" nil :exit t)
   )
 
@@ -423,7 +423,7 @@ _i_: prev  _k_: next match _d_: deadgrep  _g_: restart _f_: kill
     (define-key map (kbd "M-d") 'jnk-keys-move-region-wrapper)
     (define-key map (kbd "M-j") 'jnk-keys-quick-access/body)
     (define-key map (kbd "M-c") 'jnk-keys-compile/body)
-    (define-key map (kbd "M-SPC") 'jnk-keys-bookmarks-wrapper)
+    (define-key map (kbd "M-SPC") 'jnk-keys-file-buffer/body)
     map)
   "jnk-keys-minor-mode keymap.")
 
